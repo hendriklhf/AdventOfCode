@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <RepositoryUrl>https://github.com/Sterbehilfe/AdventOfCode</RepositoryUrl>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Year2022\Day1\Input.txt"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="HLE" Version="2.0.6"/>
+    </ItemGroup>
+
+</Project>
