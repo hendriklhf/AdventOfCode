@@ -8,7 +8,7 @@ AMD Ryzen 5 2600, 1 CPU, 12 logical and 6 physical cores
   DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
 
 
-| Method |   Mean [ns] | Allocated [B] |
-|------- |------------:|--------------:|
-|   Day1 | 68,667.3 ns |             - |
+| Method |   Mean [ns] | Error [ns] | Allocated [B] |
+|------- |------------:|-----------:|--------------:|
+|   Day1 | 69,107.3 ns |   706.5 ns |             - |
 ```

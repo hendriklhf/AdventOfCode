@@ -10,6 +10,6 @@ ManualConfig config = new()
     SummaryStyle = new(default, true, SizeUnit.B, TimeUnit.GetBestTimeUnit())
 };
 config.AddLogger(ConsoleLogger.Default);
-config.AddColumn(TargetMethodColumn.Method, StatisticColumn.Mean);
+config.AddColumn(TargetMethodColumn.Method, StatisticColumn.Mean, StatisticColumn.Error);
 config.AddColumnProvider(DefaultColumnProviders.Metrics, DefaultColumnProviders.Params);
 BenchmarkRunner.Run<Benchmarks>(config);
