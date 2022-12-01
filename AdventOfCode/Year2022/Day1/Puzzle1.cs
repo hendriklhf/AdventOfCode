@@ -8,7 +8,6 @@ namespace AdventOfCode.Year2022.Day1;
 public sealed class Puzzle1
 {
     private readonly string _input;
-    private const string _doubleNewLine = "\r\n\r\n";
 
     public Puzzle1()
     {
@@ -26,37 +25,29 @@ public sealed class Puzzle1
     {
         ReadOnlySpan<char> input = _input;
         input = input[..^2];
-        Span<Range> elvsRanges = stackalloc Range[input.Length];
-        int elvsRangesLength = input.GetRangesOfSplit(_doubleNewLine, elvsRanges);
-        elvsRanges = elvsRanges[..elvsRangesLength];
+        Span<Range> lineRanges = stackalloc Range[input.Length];
+        int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
+        lineRanges = lineRanges[..lineRangesLength];
 
         uint max = 0;
+        uint elfTotal = 0;
         Span<uint> topThree = stackalloc uint[3];
-        for (int i = 0; i < elvsRangesLength; i++)
+        for (int i = 0; i < lineRangesLength; i++)
         {
-            ReadOnlySpan<char> elvCalories = input[elvsRanges[i]];
-            uint elvTotal = GetTotalCalories(elvCalories);
-            CheckForHigherTopThree(topThree, elvTotal);
-            max = elvTotal > max ? elvTotal : max;
+            ReadOnlySpan<char> line = input[lineRanges[i]];
+            if (line.Length == 0)
+            {
+                CheckForHigherTopThree(topThree, elfTotal);
+                max = elfTotal > max ? elfTotal : max;
+                elfTotal = 0;
+                continue;
+            }
+
+            elfTotal += uint.Parse(line);
         }
 
         uint topThreeSum = topThree[0] + topThree[1] + topThree[2];
         return (max, topThreeSum);
-    }
-
-    private static uint GetTotalCalories(ReadOnlySpan<char> elvCalories)
-    {
-        Span<Range> elvRanges = stackalloc Range[elvCalories.Length];
-        int elvRangesLength = elvCalories.GetRangesOfSplit(Environment.NewLine, elvRanges);
-        elvRanges = elvRanges[..elvRangesLength];
-        uint elvTotal = 0;
-        for (int j = 0; j < elvRangesLength; j++)
-        {
-            ReadOnlySpan<char> calories = elvCalories[elvRanges[j]];
-            elvTotal += uint.Parse(calories);
-        }
-
-        return elvTotal;
     }
 
     private static void CheckForHigherTopThree(Span<uint> topThree, uint newValue)
