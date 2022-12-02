@@ -2,10 +2,10 @@
 using AdventOfCode.Year2022.Day2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AdventOfCode.Tests.Year2022;
+namespace AdventOfCode.Tests;
 
 [TestClass]
-public class Puzzle1Test
+public class Tests2022
 {
     [TestMethod]
     public void Day1Test()
