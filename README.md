@@ -1,6 +1,6 @@
 # [Advent of Code](https://adventofcode.com)
 My take on Advent of Code in C#.<br/>
-Began with it 2022, might do some older ones.<br/>
+Began with it in 2022, might do some older ones.<br/>
 Also contains [Benchmarks and their results](https://github.com/Sterbehilfe/AdventOfCode/tree/master/AdventOfCode.Benchmarks).
 
 ## Code
