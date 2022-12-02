@@ -11,6 +11,9 @@ public sealed class Puzzle2 : Puzzle
     private const byte _rockMe = 88;
     private const byte _paperMe = 89;
     private const byte _scissorsMe = 90;
+    private const byte _lossMe = 88;
+    private const byte _drawMe = 89;
+    private const byte _winMe = 90;
 
     private const byte _rockBonus = 1;
     private const byte _paperBonus = 2;
@@ -24,7 +27,7 @@ public sealed class Puzzle2 : Puzzle
     {
     }
 
-    public ushort Solve()
+    public (ushort ScorePart1, ushort ScorePart2) Solve()
     {
         ReadOnlySpan<char> input = _input;
         input = input[..^2];
@@ -32,51 +35,107 @@ public sealed class Puzzle2 : Puzzle
         int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
         lineRanges = lineRanges[..lineRangesLength];
 
-        ushort score = 0;
+        ushort scorePart1 = 0;
+        ushort scorePart2 = 0;
         for (int i = 0; i < lineRangesLength; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             byte opponent = (byte)line[0];
             byte me = (byte)line[2];
 
-            switch (me)
+            scorePart1 += CalculateScorePart1(me, opponent);
+            scorePart2 += CalculateScorePart2(me, opponent);
+        }
+
+        return (scorePart1, scorePart2);
+    }
+
+    private static ushort CalculateScorePart1(byte me, byte opponent)
+    {
+        ushort score = 0;
+        switch (me)
+        {
+            case _rockMe:
             {
-                case _rockMe:
+                score += _rockBonus;
+                score += opponent switch
                 {
-                    score += _rockBonus;
-                    score += opponent switch
-                    {
-                        _rockOpponent => _draw,
-                        _paperOpponent => _loss,
-                        _scissorsOpponent => _win,
-                        _ => throw new ArgumentOutOfRangeException()
-                    };
-                    break;
-                }
-                case _paperMe:
+                    _rockOpponent => _draw,
+                    _paperOpponent => _loss,
+                    _scissorsOpponent => _win,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+                break;
+            }
+            case _paperMe:
+            {
+                score += _paperBonus;
+                score += opponent switch
                 {
-                    score += _paperBonus;
-                    score += opponent switch
-                    {
-                        _rockOpponent => _win,
-                        _paperOpponent => _draw,
-                        _scissorsOpponent => _loss,
-                        _ => throw new ArgumentOutOfRangeException()
-                    };
-                    break;
-                }
-                case _scissorsMe:
+                    _rockOpponent => _win,
+                    _paperOpponent => _draw,
+                    _scissorsOpponent => _loss,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+                break;
+            }
+            case _scissorsMe:
+            {
+                score += _scissorsBonus;
+                score += opponent switch
                 {
-                    score += _scissorsBonus;
-                    score += opponent switch
-                    {
-                        _rockOpponent => _loss,
-                        _paperOpponent => _win,
-                        _scissorsOpponent => _draw,
-                        _ => throw new ArgumentOutOfRangeException()
-                    };
-                    break;
-                }
+                    _rockOpponent => _loss,
+                    _paperOpponent => _win,
+                    _scissorsOpponent => _draw,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+                break;
+            }
+        }
+
+        return score;
+    }
+
+    private static ushort CalculateScorePart2(byte me, byte opponent)
+    {
+        ushort score = 0;
+        switch (me)
+        {
+            case _lossMe:
+            {
+                score += _loss;
+                score += opponent switch
+                {
+                    _rockOpponent => _scissorsBonus,
+                    _paperOpponent => _rockBonus,
+                    _scissorsOpponent => _paperBonus,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+                break;
+            }
+            case _drawMe:
+            {
+                score += _draw;
+                score += opponent switch
+                {
+                    _rockOpponent => _rockBonus,
+                    _paperOpponent => _paperBonus,
+                    _scissorsOpponent => _scissorsBonus,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+                break;
+            }
+            case _winMe:
+            {
+                score += _win;
+                score += opponent switch
+                {
+                    _rockOpponent => _paperBonus,
+                    _paperOpponent => _scissorsBonus,
+                    _scissorsOpponent => _rockBonus,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+                break;
             }
         }
 

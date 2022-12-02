@@ -18,7 +18,7 @@ public class Benchmarks2022
     }
 
     [Benchmark]
-    public ushort Year2022_Day2_Part1()
+    public (ushort, ushort) Year2022_Day2()
     {
         return _puzzle2.Solve();
     }
