@@ -12,7 +12,6 @@
 
     <ItemGroup>
         <EmbeddedResource Include="Year2022\Day1\Input.txt" />
-        <None Remove="Year2022\Day2\Input.txt" />
         <EmbeddedResource Include="Year2022\Day2\Input.txt" />
     </ItemGroup>
 
