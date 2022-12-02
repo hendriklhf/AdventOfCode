@@ -74,7 +74,9 @@ public sealed class Puzzle1 : Puzzle
             }
 
             ReadOnlySpan<char> line = input[ranges[lineStartIdx + i]];
-            result += ushort.Parse(line);
+            depth = ushort.Parse(line);
+            depthes[lineStartIdx + i] = depth;
+            result += depth;
         }
 
         return result;
