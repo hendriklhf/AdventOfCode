@@ -1,5 +1,4 @@
-﻿using AdventOfCode.Year2022.Day1;
+﻿using AdventOfCode.Year2022.Day2;
 
-(uint max, uint topThree) = new Puzzle1().Solve();
-Console.WriteLine($"Max: {max}");
-Console.WriteLine($"Top Three: {topThree}");
+ushort score = new Puzzle2().Solve();
+Console.WriteLine($"Score: {score}");

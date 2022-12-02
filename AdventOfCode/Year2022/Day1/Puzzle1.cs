@@ -1,24 +1,12 @@
 ﻿using System;
-using System.Reflection;
 using HLE;
-using HLE.Resources;
 
 namespace AdventOfCode.Year2022.Day1;
 
-public sealed class Puzzle1
+public sealed class Puzzle1 : Puzzle
 {
-    private readonly string _input;
-
-    public Puzzle1()
+    public Puzzle1() : base("Year2022.Day1.Input.txt")
     {
-        ResourceReader reader = new(Assembly.GetExecutingAssembly(), false);
-        string? input = reader.ReadResource("Year2022.Day1.Input.txt");
-        if (string.IsNullOrWhiteSpace(input))
-        {
-            throw new ArgumentNullException(nameof(input));
-        }
-
-        _input = input;
     }
 
     public (uint Max, uint TopThree) Solve()
