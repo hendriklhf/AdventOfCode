@@ -66,16 +66,17 @@ public sealed class Puzzle1 : Puzzle
         ushort result = 0;
         for (int i = 0; i < 3; i++)
         {
-            ushort depth = depthes[lineStartIdx + i];
+            int idx = lineStartIdx + i;
+            ushort depth = depthes[idx];
             if (depth > 0)
             {
                 result += depth;
                 continue;
             }
 
-            ReadOnlySpan<char> line = input[ranges[lineStartIdx + i]];
+            ReadOnlySpan<char> line = input[ranges[idx]];
             depth = ushort.Parse(line);
-            depthes[lineStartIdx + i] = depth;
+            depthes[idx] = depth;
             result += depth;
         }
 
