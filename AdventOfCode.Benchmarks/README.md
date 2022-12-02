@@ -8,8 +8,8 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
   DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
 
 
-|              Method |   Mean [ns] | Error [ns] | Allocated [B] |
-|-------------------- |------------:|-----------:|--------------:|
-|       Year2022_Day1 | 44,959.8 ns |   741.2 ns |             - |
-| Year2022_Day2_Part1 | 48,657.4 ns |   940.4 ns |             - |
+|        Method |   Mean [ns] | Error [ns] | Allocated [B] |
+|-------------- |------------:|-----------:|--------------:|
+| Year2022_Day1 | 43,770.9 ns |   481.5 ns |             - |
+| Year2022_Day2 | 54,541.0 ns |   340.5 ns |             - |
 ```
