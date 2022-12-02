@@ -12,4 +12,5 @@ ManualConfig config = new()
 config.AddLogger(ConsoleLogger.Default);
 config.AddColumn(TargetMethodColumn.Method, StatisticColumn.Mean, StatisticColumn.Error);
 config.AddColumnProvider(DefaultColumnProviders.Metrics, DefaultColumnProviders.Params);
+
 BenchmarkRunner.Run<Benchmarks2022>(config);
