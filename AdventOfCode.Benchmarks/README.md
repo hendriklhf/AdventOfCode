@@ -1,4 +1,4 @@
-﻿# Advent of Code - Benchmark results
+﻿# Advent of Code - Benchmarks
 
 - [2021](#2021)
 - [2022](#2022)
