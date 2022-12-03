@@ -9,7 +9,7 @@ public sealed class Puzzle3 : Puzzle
     {
     }
 
-    public uint SolvePart1()
+    public ushort SolvePart1()
     {
         ReadOnlySpan<char> input = _input;
         input = input[..^2];
@@ -17,7 +17,7 @@ public sealed class Puzzle3 : Puzzle
         int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
         lineRanges = lineRanges[..lineRangesLength];
 
-        uint prioritySum = 0;
+        ushort prioritySum = 0;
         for (int i = 0; i < lineRangesLength; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
@@ -46,7 +46,7 @@ public sealed class Puzzle3 : Puzzle
         return prioritySum;
     }
 
-    public uint SolvePart2()
+    public ushort SolvePart2()
     {
         ReadOnlySpan<char> input = _input;
         input = input[..^2];
@@ -54,7 +54,7 @@ public sealed class Puzzle3 : Puzzle
         int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
         lineRanges = lineRanges[..lineRangesLength];
 
-        uint prioritySum = 0;
+        ushort prioritySum = 0;
         for (int i = 0; i < lineRangesLength;)
         {
             ReadOnlySpan<char> team1 = input[lineRanges[i++]];

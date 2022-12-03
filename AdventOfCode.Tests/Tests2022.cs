@@ -1,5 +1,6 @@
 ﻿using AdventOfCode.Year2022.Day1;
 using AdventOfCode.Year2022.Day2;
+using AdventOfCode.Year2022.Day3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventOfCode.Tests;
@@ -21,5 +22,13 @@ public class Tests2022
         (ushort scorePart1, ushort scorePart2) = new Puzzle2().Solve();
         Assert.AreEqual(10718, scorePart1);
         Assert.AreEqual(14652, scorePart2);
+    }
+
+    [TestMethod]
+    public void Day3Test()
+    {
+        Puzzle3 puzzle = new();
+        Assert.AreEqual(7903, puzzle.SolvePart1());
+        Assert.AreEqual(2548, puzzle.SolvePart2());
     }
 }
