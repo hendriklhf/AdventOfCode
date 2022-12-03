@@ -15,8 +15,10 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
 
 |              Method |   Mean [ns] | Error [ns] | Allocated [B] |
 |-------------------- |------------:|-----------:|--------------:|
-| Year2021_Day1_Part1 | 37,830.4 ns |   249.4 ns |             - |
-| Year2021_Day1_Part2 | 46,403.5 ns |   211.3 ns |             - |
+| Year2021_Day1_Part1 | 37,992.9 ns |  338.76 ns |             - |
+| Year2021_Day1_Part2 | 46,394.9 ns |  261.15 ns |             - |
+| Year2021_Day2_Part1 | 11,329.8 ns |  118.40 ns |             - |
+| Year2021_Day2_Part2 | 10,626.4 ns |   91.09 ns |             - |
 ```
 
 ## 2022
