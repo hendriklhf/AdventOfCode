@@ -18,6 +18,6 @@ public abstract class Puzzle
             throw new ArgumentNullException(nameof(input));
         }
 
-        _input = input;
+        _input = input.EndsWith(Environment.NewLine) ? input[..^2] : input;
     }
 }

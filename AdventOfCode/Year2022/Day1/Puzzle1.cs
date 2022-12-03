@@ -12,10 +12,8 @@ public sealed class Puzzle1 : Puzzle
     public (uint Max, uint TopThree) Solve()
     {
         ReadOnlySpan<char> input = _input;
-        input = input[..^2];
         Span<Range> lineRanges = stackalloc Range[input.Length];
         int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
-        lineRanges = lineRanges[..lineRangesLength];
 
         uint max = 0;
         uint elfTotal = 0;

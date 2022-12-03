@@ -30,10 +30,8 @@ public sealed class Puzzle2 : Puzzle
     public (ushort ScorePart1, ushort ScorePart2) Solve()
     {
         ReadOnlySpan<char> input = _input;
-        input = input[..^2];
         Span<Range> lineRanges = stackalloc Range[input.Length];
         int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
-        lineRanges = lineRanges[..lineRangesLength];
 
         ushort scorePart1 = 0;
         ushort scorePart2 = 0;

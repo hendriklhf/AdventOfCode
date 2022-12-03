@@ -12,10 +12,8 @@ public sealed class Puzzle3 : Puzzle
     public ushort SolvePart1()
     {
         ReadOnlySpan<char> input = _input;
-        input = input[..^2];
         Span<Range> lineRanges = stackalloc Range[input.Length];
         int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
-        lineRanges = lineRanges[..lineRangesLength];
 
         ushort prioritySum = 0;
         for (int i = 0; i < lineRangesLength; i++)
@@ -49,10 +47,8 @@ public sealed class Puzzle3 : Puzzle
     public ushort SolvePart2()
     {
         ReadOnlySpan<char> input = _input;
-        input = input[..^2];
         Span<Range> lineRanges = stackalloc Range[input.Length];
         int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
-        lineRanges = lineRanges[..lineRangesLength];
 
         ushort prioritySum = 0;
         for (int i = 0; i < lineRangesLength;)
