@@ -27,7 +27,7 @@ public sealed class Puzzle2 : Puzzle
         for (int i = 0; i < lineRangesLength; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
-            byte value = NumberHelper.CharToDigit(line[^1]);
+            byte value = (byte)(line[^1] - _zero);
             char cmd = line[0];
             switch (cmd)
             {
