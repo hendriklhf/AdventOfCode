@@ -1,6 +1,7 @@
 ﻿using AdventOfCode.Year2022.Day1;
 using AdventOfCode.Year2022.Day2;
 using AdventOfCode.Year2022.Day3;
+using AdventOfCode.Year2022.Day4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventOfCode.Tests;
@@ -30,5 +31,14 @@ public class Tests2022
         Puzzle3 puzzle = new();
         Assert.AreEqual(7903, puzzle.SolvePart1());
         Assert.AreEqual(2548, puzzle.SolvePart2());
+    }
+
+    [TestMethod]
+    public void Day4Test()
+    {
+        Puzzle4 puzzle = new();
+        (ushort fullyContainsCount, ushort overlapCount) = puzzle.Solve();
+        Assert.AreEqual(526, fullyContainsCount);
+        Assert.AreEqual(886, overlapCount);
     }
 }
