@@ -12,13 +12,13 @@ public sealed class Puzzle1 : Puzzle
     public ushort SolvePart1()
     {
         ReadOnlySpan<char> input = _input;
-        Span<Range> lineRanges = stackalloc Range[input.Length];
-        int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
+        Span<Range> lineRanges = stackalloc Range[2000];
+        input.GetRangesOfSplit(Environment.NewLine, lineRanges);
 
         ushort count = 0;
         ReadOnlySpan<char> firstLine = input[lineRanges[0]];
         ushort previousDepth = ushort.Parse(firstLine);
-        for (int i = 1; i < lineRangesLength; i++)
+        for (int i = 1; i < 2000; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             ushort currentDepth = ushort.Parse(line);
@@ -36,14 +36,13 @@ public sealed class Puzzle1 : Puzzle
     public ushort SolvePart2()
     {
         ReadOnlySpan<char> input = _input;
-        Span<Range> lineRanges = stackalloc Range[input.Length];
-        int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
+        Span<Range> lineRanges = stackalloc Range[2000];
+        input.GetRangesOfSplit(Environment.NewLine, lineRanges);
 
-        Span<ushort> depthes = stackalloc ushort[lineRangesLength];
+        Span<ushort> depthes = stackalloc ushort[2000];
         ushort count = 0;
         ushort previousDepth = GetDepthSum(input, lineRanges, depthes, 0);
-        lineRangesLength -= 2;
-        for (int i = 1; i < lineRangesLength; i++)
+        for (int i = 1; i < 1998; i++)
         {
             ushort currentDepth = GetDepthSum(input, lineRanges, depthes, i);
             if (currentDepth > previousDepth)

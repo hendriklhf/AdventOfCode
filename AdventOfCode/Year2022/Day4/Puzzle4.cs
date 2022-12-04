@@ -13,11 +13,11 @@ public sealed class Puzzle4 : Puzzle
     {
         ReadOnlySpan<char> input = _input;
         Span<Range> lineRanges = stackalloc Range[1000];
-        int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
+        input.GetRangesOfSplit(Environment.NewLine, lineRanges);
 
         ushort fullyContainsCount = 0;
         ushort overlapCount = 0;
-        for (int i = 0; i < lineRangesLength; i++)
+        for (int i = 0; i < 1000; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             var parsedLine = ParseLine(line);

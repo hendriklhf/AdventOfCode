@@ -17,12 +17,12 @@ public sealed class Puzzle2 : Puzzle
     public int SolvePart1()
     {
         ReadOnlySpan<char> input = _input;
-        Span<Range> lineRanges = stackalloc Range[input.Length];
-        int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
+        Span<Range> lineRanges = stackalloc Range[1000];
+        input.GetRangesOfSplit(Environment.NewLine, lineRanges);
 
         int x = 0;
         int y = 0;
-        for (int i = 0; i < lineRangesLength; i++)
+        for (int i = 0; i < 1000; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             byte value = (byte)(line[^1] - _zero);
@@ -47,13 +47,13 @@ public sealed class Puzzle2 : Puzzle
     public int SolvePart2()
     {
         ReadOnlySpan<char> input = _input;
-        Span<Range> lineRanges = stackalloc Range[input.Length];
-        int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
+        Span<Range> lineRanges = stackalloc Range[1000];
+        input.GetRangesOfSplit(Environment.NewLine, lineRanges);
 
         int x = 0;
         int y = 0;
         int aim = 0;
-        for (int i = 0; i < lineRangesLength; i++)
+        for (int i = 0; i < 1000; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             byte value = (byte)(line[^1] - _zero);

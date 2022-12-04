@@ -13,10 +13,10 @@ public sealed class Puzzle3 : Puzzle
     {
         ReadOnlySpan<char> input = _input;
         Span<Range> lineRanges = stackalloc Range[1000];
-        int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
+        input.GetRangesOfSplit(Environment.NewLine, lineRanges);
 
         Span<short> bitCounts = stackalloc short[16];
-        for (int i = 0; i < lineRangesLength; i++)
+        for (int i = 0; i < 1000; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             for (int j = 4, k = 0; j < 16; j++, k++)
