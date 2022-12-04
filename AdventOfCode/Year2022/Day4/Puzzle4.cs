@@ -49,15 +49,37 @@ public sealed class Puzzle4 : Puzzle
 
     private static ((byte Start, byte End) Left, (byte Start, byte End) Right) ParseLine(ReadOnlySpan<char> line)
     {
-        int commaIdx = line.IndexOf(',');
-        (byte leftStart, byte leftEnd) = ParseRange(line[..commaIdx++]);
-        (byte rightStart, byte rightEnd) = ParseRange(line[commaIdx..]);
+        int commaIdx = -1;
+        for (int i = 0; i < line.Length; i++)
+        {
+            if (line[i] != ',')
+            {
+                continue;
+            }
+
+            commaIdx = i;
+            break;
+        }
+
+        (byte leftStart, byte leftEnd) = ParseRange(line[..commaIdx]);
+        (byte rightStart, byte rightEnd) = ParseRange(line[++commaIdx..]);
         return ((leftStart, leftEnd), (rightStart, rightEnd));
     }
 
     private static (byte Start, byte End) ParseRange(ReadOnlySpan<char> range)
     {
-        int dashIdx = range.IndexOf('-');
-        return (byte.Parse(range[..dashIdx++]), byte.Parse(range[dashIdx..]));
+        int dashIdx = -1;
+        for (int i = 0; i < range.Length; i++)
+        {
+            if (range[i] != '-')
+            {
+                continue;
+            }
+
+            dashIdx = i;
+            break;
+        }
+
+        return (byte.Parse(range[..dashIdx]), byte.Parse(range[++dashIdx..]));
     }
 }
