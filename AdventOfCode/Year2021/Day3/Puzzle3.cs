@@ -12,7 +12,7 @@ public sealed class Puzzle3 : Puzzle
     public int SolvePart1()
     {
         ReadOnlySpan<char> input = _input;
-        Span<Range> lineRanges = stackalloc Range[input.Length];
+        Span<Range> lineRanges = stackalloc Range[1000];
         int lineRangesLength = input.GetRangesOfSplit(Environment.NewLine, lineRanges);
 
         Span<short> bitCounts = stackalloc short[16];
@@ -44,7 +44,12 @@ public sealed class Puzzle3 : Puzzle
             gammaRate |= (ushort)(bit << j);
         }
 
-        ushort epsilonRate = (ushort)~gammaRate;
+        ushort epsilonRate = (ushort)(~gammaRate & 0x0FFF);
         return gammaRate * epsilonRate;
+    }
+
+    public int SolvePart2()
+    {
+        return 0;
     }
 }
