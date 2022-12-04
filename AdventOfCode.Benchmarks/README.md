@@ -13,12 +13,12 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
   DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
 
 
-|              Method |   Mean [ns] | Error [ns] | Allocated [B] |
-|-------------------- |------------:|-----------:|--------------:|
-| Year2021_Day1_Part1 | 37,992.9 ns |  338.76 ns |             - |
-| Year2021_Day1_Part2 | 46,394.9 ns |  261.15 ns |             - |
-| Year2021_Day2_Part1 | 11,329.8 ns |  118.40 ns |             - |
-| Year2021_Day2_Part2 | 10,626.4 ns |   91.09 ns |             - |
+|              Method |     Mean |    Error |   StdDev | Allocated |
+|-------------------- |---------:|---------:|---------:|----------:|
+| Year2021_Day1_Part1 | 39.84 us | 0.795 us | 0.743 us |         - |
+| Year2021_Day1_Part2 | 47.56 us | 0.582 us | 0.486 us |         - |
+| Year2021_Day2_Part1 | 10.82 us | 0.070 us | 0.066 us |         - |
+| Year2021_Day2_Part2 | 10.89 us | 0.127 us | 0.118 us |         - |
 ```
 
 ## 2022
@@ -31,10 +31,10 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
   DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
 
 
-|              Method |   Mean [ns] | Error [ns] | Allocated [B] |
-|-------------------- |------------:|-----------:|--------------:|
-|       Year2022_Day1 | 43,426.4 ns |   515.9 ns |             - |
-|       Year2022_Day2 | 53,950.9 ns |   258.8 ns |             - |
-| Year2022_Day3_Part1 | 22,783.8 ns |   120.7 ns |             - |
-| Year2022_Day3_Part2 | 45,038.5 ns |   155.6 ns |             - |
+|              Method |     Mean |    Error |   StdDev | Allocated |
+|-------------------- |---------:|---------:|---------:|----------:|
+|       Year2022_Day1 | 44.07 us | 0.551 us | 0.516 us |         - |
+|       Year2022_Day2 | 56.10 us | 0.778 us | 0.649 us |         - |
+| Year2022_Day3_Part1 | 28.21 us | 0.500 us | 0.717 us |         - |
+| Year2022_Day3_Part2 | 43.86 us | 0.251 us | 0.223 us |         - |
 ```
