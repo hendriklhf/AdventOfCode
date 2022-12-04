@@ -33,8 +33,9 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
 
 |              Method |     Mean |    Error |   StdDev | Allocated |
 |-------------------- |---------:|---------:|---------:|----------:|
-|       Year2022_Day1 | 44.07 us | 0.551 us | 0.516 us |         - |
-|       Year2022_Day2 | 56.10 us | 0.778 us | 0.649 us |         - |
-| Year2022_Day3_Part1 | 28.21 us | 0.500 us | 0.717 us |         - |
-| Year2022_Day3_Part2 | 43.86 us | 0.251 us | 0.223 us |         - |
+|       Year2022_Day1 | 44.89 us | 0.844 us | 0.789 us |         - |
+|       Year2022_Day2 | 55.28 us | 0.175 us | 0.163 us |         - |
+| Year2022_Day3_Part1 | 27.54 us | 0.135 us | 0.127 us |         - |
+| Year2022_Day3_Part2 | 43.53 us | 0.112 us | 0.105 us |         - |
+|       Year2022_Day4 | 68.28 us | 0.525 us | 0.491 us |         - |
 ```
