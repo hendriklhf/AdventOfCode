@@ -214,7 +214,7 @@ public sealed class Puzzle5 : Puzzle
         Span<Range> lineRanges = stackalloc Range[512];
         input.GetRangesOfSplit(Environment.NewLine, lineRanges);
         Span<Range> ranges = stackalloc Range[6];
-        byte* stackBuffer = stackalloc byte[50];
+        byte* stackBuffer = stackalloc byte[_stackSize];
         for (int i = 10; i < 512; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];

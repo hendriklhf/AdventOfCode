@@ -13,10 +13,7 @@ public unsafe ref struct Stack
 
     public byte Pop() => _stack[--_count];
 
-    public void Push(byte b)
-    {
-        _stack[_count++] = b;
-    }
+    public void Push(byte b) => _stack[_count++] = b;
 
     public readonly byte Peek() => _stack[_count - 1];
 }
