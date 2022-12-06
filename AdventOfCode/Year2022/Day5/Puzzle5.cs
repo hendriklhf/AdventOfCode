@@ -214,7 +214,7 @@ public sealed class Puzzle5 : Puzzle
         Span<Range> lineRanges = stackalloc Range[512];
         input.GetRangesOfSplit(Environment.NewLine, lineRanges);
         Span<Range> ranges = stackalloc Range[6];
-        byte* loopStack = stackalloc byte[50];
+        byte* stackBuffer = stackalloc byte[50];
         for (int i = 10; i < 512; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
@@ -223,7 +223,7 @@ public sealed class Puzzle5 : Puzzle
             byte source = (byte)(byte.Parse(line[ranges[3]]) - 1);
             byte destination = (byte)(byte.Parse(line[ranges[5]]) - 1);
 
-            Stack stack = new(loopStack);
+            Stack stack = new(stackBuffer);
             for (int j = 0; j < count; j++)
             {
                 byte item = stacks[source].Pop();
@@ -245,25 +245,4 @@ public sealed class Puzzle5 : Puzzle
 
         return new(chars);
     }
-}
-
-public unsafe ref struct Stack
-{
-    private readonly byte* _stack;
-    private byte _count = 0;
-
-    public Stack(byte* stack, byte count = 0)
-    {
-        _stack = stack;
-        _count = count;
-    }
-
-    public byte Pop() => _stack[--_count];
-
-    public void Push(byte b)
-    {
-        _stack[_count++] = b;
-    }
-
-    public byte Peek() => _stack[_count - 1];
 }
