@@ -40,4 +40,6 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
 |       Year2022_Day4 | 68.43 us | 0.514 us | 0.481 us |         - |
 | Year2022_Day5_Part1 | 37.15 us | 0.259 us | 0.230 us |      40 B |
 | Year2022_Day5_Part2 | 39.57 us | 0.347 us | 0.325 us |      40 B |
+| Year2022_Day6_Part1 |  3.93 us | 0.041 us | 0.038 us |         - |
+| Year2022_Day6_Part2 | 15.90 us | 0.318 us | 0.390 us |         - |
 ```
