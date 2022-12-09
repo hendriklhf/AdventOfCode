@@ -4,6 +4,7 @@ using AdventOfCode.Year2022.Day3;
 using AdventOfCode.Year2022.Day4;
 using AdventOfCode.Year2022.Day5;
 using AdventOfCode.Year2022.Day6;
+using AdventOfCode.Year2022.Day7;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventOfCode.Tests;
@@ -58,5 +59,12 @@ public class Tests2022
         Puzzle6 puzzle = new();
         Assert.AreEqual(1356, puzzle.SolvePart1());
         Assert.AreEqual(2564, puzzle.SolvePart2());
+    }
+
+    [TestMethod]
+    public void Day7Test()
+    {
+        Puzzle7 puzzle = new();
+        Assert.AreEqual<ulong>(919137, puzzle.SolvePart1());
     }
 }

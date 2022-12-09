@@ -1,4 +1,3 @@
-﻿using AdventOfCode.Year2022.Day5;
+﻿using AdventOfCode.Year2022.Day7;
 
-Console.WriteLine(new Puzzle5().SolvePart1());
-Console.WriteLine(new Puzzle5().SolvePart2());
+Console.WriteLine(new Puzzle7().SolvePart1());
