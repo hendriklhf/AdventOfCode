@@ -65,6 +65,6 @@ public class Tests2022
     public void Day7Test()
     {
         Puzzle7 puzzle = new();
-        Assert.AreEqual<ulong>(919137, puzzle.SolvePart1());
+        Assert.AreEqual((919137, 2877389), puzzle.Solve());
     }
 }

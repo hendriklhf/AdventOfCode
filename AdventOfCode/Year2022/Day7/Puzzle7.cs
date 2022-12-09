@@ -12,13 +12,15 @@ public sealed class Puzzle7 : Puzzle
     private const string _changedDirectory = "$ cd ";
     private const string _directory = "dir ";
     private const string _chanedDirectoryUp = "$ cd ..";
-    private const ulong _maxDirectorySize = 100000;
+    private const ulong _maxDirectorySizeForPart1 = 100_000;
+    private const ulong _diskSize = 70_000_000;
+    private const ulong _updateSize = 30_000_000;
 
     public Puzzle7() : base("Year2022.Day7.Input.txt")
     {
     }
 
-    public unsafe ulong SolvePart1()
+    public unsafe (ulong, ulong) Solve()
     {
         ReadOnlySpan<char> input = _input;
         Span<Range> lineRanges = stackalloc Range[964];
@@ -51,9 +53,12 @@ public sealed class Puzzle7 : Puzzle
             }
         }
 
-        ulong result = 0;
-        GetResultCount(&startDirectory, &result);
-        return result;
+        ulong directoriesSmallerThanSize = 0;
+        ulong needToFree = _updateSize - (_diskSize - startDirectory.TotalSize);
+        ulong smallestDirectoryToDeleteSize = ulong.MaxValue;
+        GetResultCount(&startDirectory, &directoriesSmallerThanSize);
+        GetSmallestDirectoryToDelete(&startDirectory, &smallestDirectoryToDeleteSize, needToFree);
+        return (directoriesSmallerThanSize, smallestDirectoryToDeleteSize);
     }
 
     private static unsafe void GetResultCount(Directory* directory, ulong* result)
@@ -62,12 +67,27 @@ public sealed class Puzzle7 : Puzzle
         {
             Directory* child = &directory->ChildDirectories[i];
             ulong size = child->TotalSize;
-            if (size <= _maxDirectorySize)
+            if (size <= _maxDirectorySizeForPart1)
             {
                 *result += size;
             }
 
             GetResultCount(child, result);
+        }
+    }
+
+    private static unsafe void GetSmallestDirectoryToDelete(Directory* directory, ulong* result, ulong needToFree)
+    {
+        for (int i = 0; i < directory->ChildCount; i++)
+        {
+            Directory* child = &directory->ChildDirectories[i];
+            ulong size = child->TotalSize;
+            if (size >= needToFree && size < *result)
+            {
+                *result = size;
+            }
+
+            GetSmallestDirectoryToDelete(child, result, needToFree);
         }
     }
 }

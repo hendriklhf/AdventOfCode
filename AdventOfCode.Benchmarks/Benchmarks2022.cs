@@ -4,6 +4,7 @@ using AdventOfCode.Year2022.Day3;
 using AdventOfCode.Year2022.Day4;
 using AdventOfCode.Year2022.Day5;
 using AdventOfCode.Year2022.Day6;
+using AdventOfCode.Year2022.Day7;
 using BenchmarkDotNet.Attributes;
 
 namespace AdventOfCode.Benchmarks;
@@ -18,6 +19,7 @@ public class Benchmarks2022
     private readonly Puzzle4 _puzzle4 = new();
     private readonly Puzzle5 _puzzle5 = new();
     private readonly Puzzle6 _puzzle6 = new();
+    private readonly Puzzle7 _puzzle7 = new();
 
     [Benchmark]
     public (uint, uint) Year2022_Day1()
@@ -71,5 +73,11 @@ public class Benchmarks2022
     public int Year2022_Day6_Part2()
     {
         return _puzzle6.SolvePart2();
+    }
+
+    [Benchmark]
+    public (ulong, ulong) Year2022_Day7()
+    {
+        return _puzzle7.Solve();
     }
 }
