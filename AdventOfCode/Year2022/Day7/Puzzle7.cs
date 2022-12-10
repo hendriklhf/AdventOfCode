@@ -20,7 +20,7 @@ public sealed class Puzzle7 : Puzzle
     {
     }
 
-    public unsafe (ulong, ulong) Solve()
+    public unsafe (ulong SumOfDirectoriesSmallerThan100k, ulong SmallestDirectoryToDelete) Solve()
     {
         ReadOnlySpan<char> input = _input;
         Span<Range> lineRanges = stackalloc Range[964];
