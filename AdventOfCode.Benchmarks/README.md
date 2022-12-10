@@ -31,15 +31,17 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
   DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
 
 
-|              Method |     Mean |    Error |   StdDev | Allocated |
-|-------------------- |---------:|---------:|---------:|----------:|
-|       Year2022_Day1 | 42.06 us | 0.373 us | 0.292 us |         - |
-|       Year2022_Day2 | 52.27 us | 0.439 us | 0.389 us |         - |
-| Year2022_Day3_Part1 | 22.29 us | 0.375 us | 0.401 us |         - |
-| Year2022_Day3_Part2 | 42.81 us | 0.236 us | 0.221 us |         - |
-|       Year2022_Day4 | 68.43 us | 0.514 us | 0.481 us |         - |
-| Year2022_Day5_Part1 | 39.36 us | 0.726 us | 0.679 us |      40 B |
-| Year2022_Day5_Part2 | 40.30 us | 0.676 us | 0.599 us |      40 B |
-| Year2022_Day6_Part1 |  3.93 us | 0.041 us | 0.038 us |         - |
-| Year2022_Day6_Part2 | 15.90 us | 0.318 us | 0.390 us |         - |
+|              Method |       Mean |     Error |    StdDev | Allocated |
+|-------------------- |-----------:|----------:|----------:|----------:|
+|       Year2022_Day1 |  41.914 us | 0.3472 us | 0.2711 us |         - |
+|       Year2022_Day2 |   52.27 us | 0.4390 us | 0.3890 us |         - |
+| Year2022_Day3_Part1 |   22.29 us | 0.3750 us | 0.4010 us |         - |
+| Year2022_Day3_Part2 |   42.81 us | 0.2360 us | 0.2210 us |         - |
+|       Year2022_Day4 |   68.43 us | 0.5140 us | 0.4810 us |         - |
+| Year2022_Day5_Part1 |  37.860 us | 0.2379 us | 0.2225 us |      40 B |
+| Year2022_Day5_Part2 |  40.075 us | 0.2416 us | 0.2142 us |      40 B |
+| Year2022_Day6_Part1 |   3.693 us | 0.0329 us | 0.0307 us |         - |
+| Year2022_Day6_Part2 |  15.900 us | 0.3180 us | 0.3900 us |         - |
+|       Year2022_Day7 |  24.487 us | 0.1667 us | 0.1478 us |         - |
+|       Year2022_Day8 | 715.106 us | 3.5306 us | 3.1298 us |         - |
 ```
