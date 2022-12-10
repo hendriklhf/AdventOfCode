@@ -22,6 +22,7 @@ public sealed class Puzzle8 : Puzzle
             for (int j = 1; j < 98; j++)
             {
                 char treeSize = line[j];
+                CheckScenicScore(input, lineRanges, treeSize, ref maxScenicScore, i, j);
                 if (treeSize == '0')
                 {
                     continue;
@@ -53,8 +54,6 @@ public sealed class Puzzle8 : Puzzle
                 {
                     visibleCount++;
                 }
-
-                CheckScenicScore(input, lineRanges, treeSize, ref maxScenicScore, i, j);
             }
         }
 
