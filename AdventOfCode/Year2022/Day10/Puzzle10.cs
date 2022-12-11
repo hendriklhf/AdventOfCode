@@ -14,7 +14,7 @@ public sealed class Puzzle10 : Puzzle
         ReadOnlySpan<char> input = _input;
         Span<Range> lineRanges = stackalloc Range[145];
         input.GetRangesOfSplit(Environment.NewLine, lineRanges);
-        ushort clockCycle = 0;
+        byte clockCycle = 0;
         short registerValue = 1;
         int signalSum = 0;
 
@@ -29,26 +29,47 @@ public sealed class Puzzle10 : Puzzle
         };
         Stack<byte> cycleStack = new(cyclesToCheck, cyclesToCheck.Length);
 
-        Span<char> pixels = stackalloc char[241];
+        Span<char> pixels = stackalloc char[240];
         pixels.Fill(' ');
-        for (int i = 0; clockCycle < 240; i++)
+
+        for (int i = 0; i < 145; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             byte cycleCount = (byte)(line[0] == 'n' ? 1 : 2);
-            sbyte value = cycleCount > 1 && sbyte.TryParse(line[5..], out value) ? value : (sbyte)0;
-            clockCycle += cycleCount;
+            Task currentTask = cycleCount == 1 ? Task.Nop : new(sbyte.Parse(line[5..]));
+            while (!currentTask.Completed)
+            {
+                byte horizontalPixelCoordinate = GetPixelIndexFromCycle(clockCycle);
+                if (horizontalPixelCoordinate == registerValue || horizontalPixelCoordinate == registerValue + 1 || horizontalPixelCoordinate == registerValue - 1)
+                {
+                    pixels[clockCycle] = '#';
+                }
 
-            if (clockCycle < 221 && clockCycle >= cycleStack.Peek())
-            {
-                signalSum += registerValue * cycleStack.Pop();
-                registerValue += value;
+                clockCycle++;
+                currentTask.Work();
+
+                if (clockCycle <= 220 && clockCycle == cycleStack.Peek())
+                {
+                    signalSum += registerValue * cycleStack.Pop();
+                }
             }
-            else
-            {
-                registerValue += value;
-            }
+
+            registerValue += currentTask.Value;
         }
 
-        return (signalSum, pixels[1..].ToArray());
+        return (signalSum, pixels.ToArray());
+    }
+
+    private static byte GetPixelIndexFromCycle(byte clockCycle)
+    {
+        return clockCycle switch
+        {
+            < 41 => clockCycle,
+            < 81 => (byte)(clockCycle - 40),
+            < 121 => (byte)(clockCycle - 80),
+            < 161 => (byte)(clockCycle - 120),
+            < 201 => (byte)(clockCycle - 160),
+            _ => (byte)(clockCycle - 200)
+        };
     }
 }
