@@ -6,6 +6,7 @@ using AdventOfCode.Year2022.Day5;
 using AdventOfCode.Year2022.Day6;
 using AdventOfCode.Year2022.Day7;
 using AdventOfCode.Year2022.Day8;
+using AdventOfCode.Year2022.Day9;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventOfCode.Tests;
@@ -66,7 +67,7 @@ public class Tests2022
     public void Day7Test()
     {
         Puzzle7 puzzle = new();
-        Assert.AreEqual((919137, 2877389), puzzle.Solve());
+        Assert.AreEqual<(ulong, ulong)>((919137, 2877389), puzzle.Solve());
     }
 
     [TestMethod]
@@ -74,7 +75,14 @@ public class Tests2022
     {
         Puzzle8 puzzle = new();
         (ushort visibleCount, uint maxScenicScore) = puzzle.Solve();
-        Assert.AreEqual(1763, visibleCount);
-        Assert.AreEqual(671160, maxScenicScore);
+        Assert.AreEqual<ushort>(1763, visibleCount);
+        Assert.AreEqual<uint>(671160, maxScenicScore);
+    }
+
+    [TestMethod]
+    public void Day9Test()
+    {
+        Puzzle9 puzzle = new();
+        Assert.AreEqual(6271, puzzle.Solve());
     }
 }
