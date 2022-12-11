@@ -40,7 +40,8 @@ public sealed class Puzzle10 : Puzzle
             while (!currentTask.Completed)
             {
                 byte horizontalPixelCoordinate = GetPixelIndexFromCycle(clockCycle);
-                if (horizontalPixelCoordinate == registerValue || horizontalPixelCoordinate == registerValue + 1 || horizontalPixelCoordinate == registerValue - 1)
+                bool drawPixel = horizontalPixelCoordinate == registerValue || horizontalPixelCoordinate == registerValue + 1 || horizontalPixelCoordinate == registerValue - 1;
+                if (drawPixel)
                 {
                     pixels[clockCycle] = '#';
                 }
