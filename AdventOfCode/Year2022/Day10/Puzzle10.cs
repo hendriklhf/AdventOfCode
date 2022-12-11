@@ -62,7 +62,7 @@ public sealed class Puzzle10 : Puzzle
 
     private static byte GetPixelIndexFromCycle(byte clockCycle)
     {
-        return clockCycle switch
+        byte pixelIndex = clockCycle switch
         {
             < 41 => clockCycle,
             < 81 => (byte)(clockCycle - 40),
@@ -71,5 +71,7 @@ public sealed class Puzzle10 : Puzzle
             < 201 => (byte)(clockCycle - 160),
             _ => (byte)(clockCycle - 200)
         };
+
+        return (byte)(pixelIndex == 40 ? 0 : pixelIndex);
     }
 }
