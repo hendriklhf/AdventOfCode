@@ -83,6 +83,7 @@ public class Tests2022
     public void Day9Test()
     {
         Puzzle9 puzzle = new();
-        Assert.AreEqual(6271, puzzle.Solve());
+        Assert.AreEqual(6271, puzzle.SolvePart1());
+        Assert.AreEqual(2458, puzzle.SolvePart2());
     }
 }
