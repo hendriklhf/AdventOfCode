@@ -9,7 +9,7 @@ public sealed class Puzzle10 : Puzzle
     {
     }
 
-    public (int, char[]) Solve()
+    public (int SignalSum, char[] DisplayOutput) Solve()
     {
         ReadOnlySpan<char> input = _input;
         Span<Range> lineRanges = stackalloc Range[145];

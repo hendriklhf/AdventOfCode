@@ -1,4 +1,5 @@
 ﻿using AdventOfCode.Year2022.Day1;
+using AdventOfCode.Year2022.Day10;
 using AdventOfCode.Year2022.Day2;
 using AdventOfCode.Year2022.Day3;
 using AdventOfCode.Year2022.Day4;
@@ -85,5 +86,14 @@ public class Tests2022
         Puzzle9 puzzle = new();
         Assert.AreEqual(6271, puzzle.SolvePart1());
         Assert.AreEqual(2458, puzzle.SolvePart2());
+    }
+
+    [TestMethod]
+    public void Day10Test()
+    {
+        Puzzle10 puzzle = new();
+        (int signalSum, char[] displayOutput) = puzzle.Solve();
+        Assert.AreEqual(12560, signalSum);
+        Assert.AreEqual("###  #    ###   ##  #### ###   ##  #    #  # #    #  # #  # #    #  # #  # #    #  # #    #  # #  # ###  ###  #    #    ###  #    ###  #### #    #  # #    #    #    #    #    #  # #    #  # #  # #    #    #### #    #  # #    ###   ##  #### ", new(displayOutput));
     }
 }
