@@ -1,4 +1,10 @@
-﻿using AdventOfCode.Year2022.Day9;
+﻿using AdventOfCode.Year2022.Day10;
+using HLE;
 
-Console.WriteLine(new Puzzle9().SolvePart1());
-Console.WriteLine(new Puzzle9().SolvePart2());
+(int signalStrength, char[] pixels) = new Puzzle10().Solve();
+Console.WriteLine(signalStrength);
+var part = new string(pixels).Part(40);
+for (int i = 0; i < part.Length; i++)
+{
+    Console.WriteLine(part[i]);
+}
