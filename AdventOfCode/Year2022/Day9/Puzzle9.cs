@@ -19,8 +19,8 @@ public sealed class Puzzle9 : Puzzle
         input.GetRangesOfSplit(Environment.NewLine, lineRanges);
         (int X, int Y) head = (0, 0);
         (int X, int Y) tail = (0, 0);
-        Span<(int, int)> visitedCoordinates = stackalloc (int, int)[10000];
-        visitedCoordinates[0] = tail;
+        Span<int> visitedCoordinateHashes = stackalloc int[10000];
+        visitedCoordinateHashes[0] = tail.GetHashCode();
         int visitedCount = 1;
         for (int i = 0; i < 2000; i++)
         {
@@ -72,9 +72,10 @@ public sealed class Puzzle9 : Puzzle
                     }
                 }
 
-                if (!visitedCoordinates[..visitedCount].Contains(tail))
+                int tailHashCode = tail.GetHashCode();
+                if (!visitedCoordinateHashes[..visitedCount].Contains(tailHashCode))
                 {
-                    visitedCoordinates[visitedCount++] = tail;
+                    visitedCoordinateHashes[visitedCount++] = tailHashCode;
                 }
             }
         }
@@ -88,8 +89,8 @@ public sealed class Puzzle9 : Puzzle
         Span<Range> lineRanges = stackalloc Range[2000];
         input.GetRangesOfSplit(Environment.NewLine, lineRanges);
         Span<(int X, int Y)> rope = stackalloc (int, int)[10];
-        Span<(int, int)> visitedCoordinates = stackalloc (int, int)[10000];
-        visitedCoordinates[0] = rope[9];
+        Span<int> visitedCoordinateHashes = stackalloc int[10000];
+        visitedCoordinateHashes[0] = rope[9].GetHashCode();
         int visitedCount = 1;
         for (int i = 0; i < 2000; i++)
         {
@@ -150,9 +151,10 @@ public sealed class Puzzle9 : Puzzle
                 }
 
                 (int X, int Y) lastKnot = rope[9];
-                if (!visitedCoordinates[..visitedCount].Contains(lastKnot))
+                int lastKnotHash = lastKnot.GetHashCode();
+                if (!visitedCoordinateHashes[..visitedCount].Contains(lastKnotHash))
                 {
-                    visitedCoordinates[visitedCount++] = lastKnot;
+                    visitedCoordinateHashes[visitedCount++] = lastKnotHash;
                 }
             }
         }
