@@ -31,20 +31,20 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
   DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
 
 
-|              Method |         Mean |       Error |     StdDev | Allocated |
-|-------------------- |-------------:|------------:|-----------:|----------:|
-|       Year2022_Day1 |    41.914 us |   0.3472 us |  0.2711 us |         - |
-|       Year2022_Day2 |     52.27 us |   0.4390 us |  0.3890 us |         - |
-| Year2022_Day3_Part1 |     22.29 us |   0.3750 us |  0.4010 us |         - |
-| Year2022_Day3_Part2 |     42.81 us |   0.2360 us |  0.2210 us |         - |
-|       Year2022_Day4 |     68.43 us |   0.5140 us |  0.4810 us |         - |
-| Year2022_Day5_Part1 |    37.860 us |   0.2379 us |  0.2225 us |      40 B | // result had to be allocated, nothing else was allocated
-| Year2022_Day5_Part2 |    40.075 us |   0.2416 us |  0.2142 us |      40 B | // result had to be allocated, nothing else was allocated
-| Year2022_Day6_Part1 |     3.693 us |   0.0329 us |  0.0307 us |         - |
-| Year2022_Day6_Part2 |    15.900 us |   0.3180 us |  0.3900 us |         - |
-|       Year2022_Day7 |    24.487 us |   0.1667 us |  0.1478 us |         - |
-|       Year2022_Day8 |   715.106 us |   3.5306 us |  3.1298 us |         - |
-| Year2022_Day9_Part1 | 2,009.187 us |   8.8769 us |  8.3034 us |       2 B |
-| Year2022_Day9_Part2 | 1,250.735 us |   5.3585 us |  4.1835 us |       1 B |
-|      Year2022_Day10 |     2.925 us |   0.0180 us |  0.0169 us |     504 B | // result had to be allocated, nothing else was allocated
+|              Method |         Mean |     Error |    StdDev | Allocated |
+|-------------------- |-------------:|----------:|----------:|----------:|
+|       Year2022_Day1 |    40.720 us | 0.2709 us | 0.2402 us |         - |
+|       Year2022_Day2 |    52.270 us | 0.4390 us | 0.3890 us |         - |
+| Year2022_Day3_Part1 |    22.104 us | 0.1429 us | 0.1337 us |         - |
+| Year2022_Day3_Part2 |    42.574 us | 0.0839 us | 0.0701 us |         - |
+|       Year2022_Day4 |    68.430 us | 0.5140 us | 0.4810 us |         - |
+| Year2022_Day5_Part1 |    37.860 us | 0.2379 us | 0.2225 us |      40 B | // result had to be allocated, nothing else was allocated
+| Year2022_Day5_Part2 |    40.075 us | 0.2416 us | 0.2142 us |      40 B | // result had to be allocated, nothing else was allocated
+| Year2022_Day6_Part1 |     3.693 us | 0.0329 us | 0.0307 us |         - |
+| Year2022_Day6_Part2 |    15.613 us | 0.3039 us | 0.4454 us |         - |
+|       Year2022_Day7 |    24.305 us | 0.1646 us | 0.1540 us |         - |
+|       Year2022_Day8 |   706.736 us | 2.1159 us | 1.7669 us |         - |
+| Year2022_Day9_Part1 | 2,006.148 us | 3.7658 us | 3.3383 us |       2 B |
+| Year2022_Day9_Part2 | 1,237.539 us | 4.7316 us | 3.9511 us |       1 B |
+|      Year2022_Day10 |     2.925 us | 0.0180 us | 0.0169 us |     504 B | // result had to be allocated, nothing else was allocated
 ```

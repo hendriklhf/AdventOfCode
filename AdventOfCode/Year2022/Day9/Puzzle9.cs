@@ -26,7 +26,7 @@ public sealed class Puzzle9 : Puzzle
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             char direction = line[0];
-            byte count = byte.Parse(line[2..]);
+            byte count = byte.Parse(line[new Range(new(2), new(0, true))]);
 
             int* headCoordinate = null;
             int movement = 0;
@@ -73,7 +73,7 @@ public sealed class Puzzle9 : Puzzle
                 }
 
                 int tailHashCode = tail.GetHashCode();
-                if (!visitedCoordinateHashes[..visitedCount].Contains(tailHashCode))
+                if (!visitedCoordinateHashes[new Range(new(0), new(visitedCount))].Contains(tailHashCode))
                 {
                     visitedCoordinateHashes[visitedCount++] = tailHashCode;
                 }
@@ -96,7 +96,7 @@ public sealed class Puzzle9 : Puzzle
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             char direction = line[0];
-            byte count = byte.Parse(line[2..]);
+            byte count = byte.Parse(line[new Range(new(2), new(0, true))]);
 
             ref int headCoordinate = ref Unsafe.NullRef<int>();
             int movement = 0;
@@ -152,7 +152,7 @@ public sealed class Puzzle9 : Puzzle
 
                 (int X, int Y) lastKnot = rope[9];
                 int lastKnotHash = lastKnot.GetHashCode();
-                if (!visitedCoordinateHashes[..visitedCount].Contains(lastKnotHash))
+                if (!visitedCoordinateHashes[new Range(new(0), new(visitedCount))].Contains(lastKnotHash))
                 {
                     visitedCoordinateHashes[visitedCount++] = lastKnotHash;
                 }
