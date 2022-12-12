@@ -44,7 +44,7 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
 | Year2022_Day6_Part2 |    15.900 us |   0.3180 us |  0.3900 us |         - |
 |       Year2022_Day7 |    24.487 us |   0.1667 us |  0.1478 us |         - |
 |       Year2022_Day8 |   715.106 us |   3.5306 us |  3.1298 us |         - |
-| Year2022_Day9_Part1 | 9,408.242 us |  42.3210 us | 37.5165 us |       6 B |
-| Year2022_Day9_Part2 | 4,247.779 us |  13.7587 us | 12.1967 us |       3 B |
+| Year2022_Day9_Part1 | 2,009.187 us |   8.8769 us |  8.3034 us |       2 B |
+| Year2022_Day9_Part2 | 1,250.735 us |   5.3585 us |  4.1835 us |       1 B |
 |      Year2022_Day10 |     2.925 us |   0.0180 us |  0.0169 us |     504 B | // result had to be allocated, nothing else was allocated
 ```
