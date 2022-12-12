@@ -1,13 +1,13 @@
-﻿using AdventOfCode.Year2022.Day1;
+﻿using AdventOfCode.Year2022.Day01;
+using AdventOfCode.Year2022.Day02;
+using AdventOfCode.Year2022.Day03;
+using AdventOfCode.Year2022.Day04;
+using AdventOfCode.Year2022.Day05;
+using AdventOfCode.Year2022.Day06;
+using AdventOfCode.Year2022.Day07;
+using AdventOfCode.Year2022.Day08;
+using AdventOfCode.Year2022.Day09;
 using AdventOfCode.Year2022.Day10;
-using AdventOfCode.Year2022.Day2;
-using AdventOfCode.Year2022.Day3;
-using AdventOfCode.Year2022.Day4;
-using AdventOfCode.Year2022.Day5;
-using AdventOfCode.Year2022.Day6;
-using AdventOfCode.Year2022.Day7;
-using AdventOfCode.Year2022.Day8;
-using AdventOfCode.Year2022.Day9;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventOfCode.Tests;

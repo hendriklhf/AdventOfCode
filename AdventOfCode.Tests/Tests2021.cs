@@ -1,6 +1,6 @@
-﻿using AdventOfCode.Year2021.Day1;
-using AdventOfCode.Year2021.Day2;
-using AdventOfCode.Year2021.Day3;
+﻿using AdventOfCode.Year2021.Day01;
+using AdventOfCode.Year2021.Day02;
+using AdventOfCode.Year2021.Day03;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventOfCode.Tests;

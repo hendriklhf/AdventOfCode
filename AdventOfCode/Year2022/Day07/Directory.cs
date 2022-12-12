@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace AdventOfCode.Year2022.Day7;
+namespace AdventOfCode.Year2022.Day07;
 
 public unsafe struct Directory
 {

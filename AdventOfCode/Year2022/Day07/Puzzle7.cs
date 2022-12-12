@@ -4,7 +4,7 @@ using HLE;
 
 // ReSharper disable StackAllocInsideLoop
 
-namespace AdventOfCode.Year2022.Day7;
+namespace AdventOfCode.Year2022.Day07;
 
 [SuppressMessage("Reliability", "CA2014:Do not use stackalloc in loops")]
 public sealed class Puzzle7 : Puzzle
@@ -16,7 +16,7 @@ public sealed class Puzzle7 : Puzzle
     private const ulong _diskSize = 70_000_000;
     private const ulong _updateSize = 30_000_000;
 
-    public Puzzle7() : base("Year2022.Day7.Input.txt")
+    public Puzzle7() : base("Year2022.Day07.Input.txt")
     {
     }
 

@@ -11,21 +11,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="Year2021\Day1\Input.txt" />
-        <EmbeddedResource Include="Year2021\Day2\Input.txt" />
-        <EmbeddedResource Include="Year2021\Day3\Input.txt" />
+        <EmbeddedResource Include="Year2021\Day01\Input.txt" />
+        <EmbeddedResource Include="Year2021\Day02\Input.txt" />
+        <EmbeddedResource Include="Year2021\Day03\Input.txt" />
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="Year2022\Day1\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day2\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day3\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day4\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day5\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day6\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day7\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day8\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day9\Input.txt" />
+        <EmbeddedResource Include="Year2022\Day01\Input.txt" />
+        <EmbeddedResource Include="Year2022\Day02\Input.txt" />
+        <EmbeddedResource Include="Year2022\Day03\Input.txt" />
+        <EmbeddedResource Include="Year2022\Day04\Input.txt" />
+        <EmbeddedResource Include="Year2022\Day05\Input.txt" />
+        <EmbeddedResource Include="Year2022\Day06\Input.txt" />
+        <EmbeddedResource Include="Year2022\Day07\Input.txt" />
+        <EmbeddedResource Include="Year2022\Day08\Input.txt" />
+        <EmbeddedResource Include="Year2022\Day09\Input.txt" />
         <EmbeddedResource Include="Year2022\Day10\Input.txt" />
     </ItemGroup>
 

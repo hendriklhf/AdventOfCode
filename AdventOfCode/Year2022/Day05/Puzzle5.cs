@@ -1,13 +1,13 @@
 ﻿using System;
 using HLE;
 
-namespace AdventOfCode.Year2022.Day5;
+namespace AdventOfCode.Year2022.Day05;
 
 public sealed class Puzzle5 : Puzzle
 {
     private const byte _stackSize = 50;
 
-    public Puzzle5() : base("Year2022.Day5.Input.txt")
+    public Puzzle5() : base("Year2022.Day05.Input.txt")
     {
     }
 

@@ -1,11 +1,11 @@
 ﻿using System;
 using HLE;
 
-namespace AdventOfCode.Year2021.Day1;
+namespace AdventOfCode.Year2021.Day01;
 
 public sealed class Puzzle1 : Puzzle
 {
-    public Puzzle1() : base("Year2021.Day1.Input.txt")
+    public Puzzle1() : base("Year2021.Day01.Input.txt")
     {
     }
 

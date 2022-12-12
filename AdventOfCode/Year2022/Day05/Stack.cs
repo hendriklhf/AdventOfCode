@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode.Year2022.Day5;
+﻿namespace AdventOfCode.Year2022.Day05;
 
 public unsafe ref struct Stack
 {

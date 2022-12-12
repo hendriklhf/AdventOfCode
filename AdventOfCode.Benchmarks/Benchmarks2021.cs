@@ -1,5 +1,5 @@
-﻿using AdventOfCode.Year2021.Day1;
-using AdventOfCode.Year2021.Day2;
+﻿using AdventOfCode.Year2021.Day01;
+using AdventOfCode.Year2021.Day02;
 using BenchmarkDotNet.Attributes;
 
 namespace AdventOfCode.Benchmarks;

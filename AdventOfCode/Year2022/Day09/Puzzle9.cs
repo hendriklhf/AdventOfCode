@@ -4,11 +4,11 @@ using HLE;
 
 #pragma warning disable CS9085
 
-namespace AdventOfCode.Year2022.Day9;
+namespace AdventOfCode.Year2022.Day09;
 
 public sealed class Puzzle9 : Puzzle
 {
-    public Puzzle9() : base("Year2022.Day9.Input.txt")
+    public Puzzle9() : base("Year2022.Day09.Input.txt")
     {
     }
 

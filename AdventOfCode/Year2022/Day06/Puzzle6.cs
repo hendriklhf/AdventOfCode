@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace AdventOfCode.Year2022.Day6;
+namespace AdventOfCode.Year2022.Day06;
 
 public sealed class Puzzle6 : Puzzle
 {
-    public Puzzle6() : base("Year2022.Day6.Input.txt")
+    public Puzzle6() : base("Year2022.Day06.Input.txt")
     {
     }
 

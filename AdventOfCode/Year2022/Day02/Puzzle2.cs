@@ -1,7 +1,7 @@
 ﻿using System;
 using HLE;
 
-namespace AdventOfCode.Year2022.Day2;
+namespace AdventOfCode.Year2022.Day02;
 
 public sealed class Puzzle2 : Puzzle
 {
@@ -23,7 +23,7 @@ public sealed class Puzzle2 : Puzzle
     private const byte _draw = 3;
     private const byte _loss = 0;
 
-    public Puzzle2() : base("Year2022.Day2.Input.txt")
+    public Puzzle2() : base("Year2022.Day02.Input.txt")
     {
     }
 
