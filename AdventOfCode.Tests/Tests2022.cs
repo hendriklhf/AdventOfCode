@@ -8,6 +8,7 @@ using AdventOfCode.Year2022.Day07;
 using AdventOfCode.Year2022.Day08;
 using AdventOfCode.Year2022.Day09;
 using AdventOfCode.Year2022.Day10;
+using AdventOfCode.Year2022.Day11;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventOfCode.Tests;
@@ -95,5 +96,13 @@ public class Tests2022
         (int signalSum, char[] displayOutput) = puzzle.Solve();
         Assert.AreEqual(12560, signalSum);
         Assert.AreEqual("###  #    ###   ##  #### ###   ##  #    #  # #    #  # #  # #    #  # #  # #    #  # #    #  # #  # ###  ###  #    #    ###  #    ###  #### #    #  # #    #    #    #    #    #  # #    #  # #  # #    #    #### #    #  # #    ###   ##  #### ", new(displayOutput));
+    }
+
+    [TestMethod]
+    public void Day11Test()
+    {
+        Puzzle11 puzzle = new();
+        Assert.AreEqual<ulong>(99840, puzzle.SolvePart1());
+        Assert.AreEqual<ulong>(20683044837, puzzle.SolvePart2());
     }
 }

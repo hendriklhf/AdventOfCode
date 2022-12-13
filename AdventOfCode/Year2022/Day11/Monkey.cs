@@ -5,13 +5,13 @@ namespace AdventOfCode.Year2022.Day11;
 
 public unsafe struct Monkey
 {
-    public int InspectCount { get; private set; }
+    public ulong InspectCount { get; private set; }
 
-    public readonly Span<int> Items => new(_items, 30);
+    public readonly Span<ulong> Items => new(_items, 30);
 
     public int ItemCount { get; set; }
 
-    private readonly int* _items;
+    private readonly ulong* _items;
 
     private readonly char _inspectOperation;
     private readonly byte _inspectChange;
@@ -19,18 +19,18 @@ public unsafe struct Monkey
     private readonly byte _testTrue;
     private readonly byte _testFalse;
 
-    public Monkey(Span<int> items, byte itemCount, char inspectOperation, byte inspectChange, byte divideBy, byte testTrue, byte testFalse)
+    public Monkey(Span<ulong> items, byte itemCount, char inspectOperation, byte inspectChange, byte divideBy, byte testTrue, byte testFalse)
     {
-        _items = (int*)Unsafe.AsPointer(ref items[0]);
+        _items = (ulong*)Unsafe.AsPointer(ref items[0]);
         ItemCount = itemCount;
+        _divideBy = divideBy;
         _inspectOperation = inspectOperation;
         _inspectChange = inspectChange;
-        _divideBy = divideBy;
         _testTrue = testTrue;
         _testFalse = testFalse;
     }
 
-    public int Inspect(int oldWorryLevel)
+    public ulong Inspect(ulong oldWorryLevel)
     {
         InspectCount++;
         return _inspectChange switch
@@ -45,7 +45,7 @@ public unsafe struct Monkey
         };
     }
 
-    public readonly int GetThrowTarget(int worryLevel)
+    public readonly byte GetThrowTarget(ulong worryLevel)
     {
         return worryLevel % _divideBy == 0 ? _testTrue : _testFalse;
     }
