@@ -12,7 +12,7 @@ public sealed class Puzzle11 : Puzzle
     {
     }
 
-    public ulong SolvePart1()
+    public unsafe ulong SolvePart1()
     {
         ReadOnlySpan<char> input = _input;
         Span<Range> lineRanges = stackalloc Range[55];
@@ -53,7 +53,7 @@ public sealed class Puzzle11 : Puzzle
             for (int m = 0; m < 8; m++)
             {
                 ref Monkey monkey = ref monkeys[m];
-                Span<ulong> items = monkey.Items;
+                ulong* items = monkey.Items;
                 for (int i = 0; i < monkey.ItemCount; i++)
                 {
                     ulong item = items[i];
@@ -86,7 +86,7 @@ public sealed class Puzzle11 : Puzzle
         return topTwo[0] * topTwo[1];
     }
 
-    public ulong SolvePart2()
+    public unsafe ulong SolvePart2()
     {
         ReadOnlySpan<char> input = _input;
         Span<Range> lineRanges = stackalloc Range[55];
@@ -129,7 +129,7 @@ public sealed class Puzzle11 : Puzzle
             for (int m = 0; m < 8; m++)
             {
                 ref Monkey monkey = ref monkeys[m];
-                Span<ulong> items = monkey.Items;
+                ulong* items = monkey.Items;
                 for (int i = 0; i < monkey.ItemCount; i++)
                 {
                     ulong item = items[i];

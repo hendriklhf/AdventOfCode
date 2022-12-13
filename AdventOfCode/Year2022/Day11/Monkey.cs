@@ -7,11 +7,9 @@ public unsafe struct Monkey
 {
     public ulong InspectCount { get; private set; }
 
-    public readonly Span<ulong> Items => new(_items, 30);
+    public ulong* Items { get; }
 
     public int ItemCount { get; set; }
-
-    private readonly ulong* _items;
 
     private readonly char _inspectOperation;
     private readonly byte _inspectChange;
@@ -21,7 +19,7 @@ public unsafe struct Monkey
 
     public Monkey(Span<ulong> items, byte itemCount, char inspectOperation, byte inspectChange, byte divideBy, byte testTrue, byte testFalse)
     {
-        _items = (ulong*)Unsafe.AsPointer(ref items[0]);
+        Items = (ulong*)Unsafe.AsPointer(ref items[0]);
         ItemCount = itemCount;
         _divideBy = divideBy;
         _inspectOperation = inspectOperation;
