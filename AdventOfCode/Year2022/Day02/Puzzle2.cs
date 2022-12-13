@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using HLE;
 
 namespace AdventOfCode.Year2022.Day02;
@@ -27,6 +28,7 @@ public sealed class Puzzle2 : Puzzle
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public (ushort ScorePart1, ushort ScorePart2) Solve()
     {
         ReadOnlySpan<char> input = _input;
@@ -48,6 +50,7 @@ public sealed class Puzzle2 : Puzzle
         return (scorePart1, scorePart2);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static ushort CalculateScorePart1(byte me, byte opponent)
     {
         ushort score = 0;
@@ -94,6 +97,7 @@ public sealed class Puzzle2 : Puzzle
         return score;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static ushort CalculateScorePart2(byte me, byte opponent)
     {
         ushort score = 0;

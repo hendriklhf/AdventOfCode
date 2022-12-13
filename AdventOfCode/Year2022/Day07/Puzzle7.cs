@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using HLE;
 
 // ReSharper disable StackAllocInsideLoop
@@ -20,6 +21,7 @@ public sealed class Puzzle7 : Puzzle
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public unsafe (ulong SumOfDirectoriesSmallerThan100k, ulong SmallestDirectoryToDelete) Solve()
     {
         ReadOnlySpan<char> input = _input;
@@ -61,6 +63,7 @@ public sealed class Puzzle7 : Puzzle
         return (directoriesSmallerThanSize, smallestDirectoryToDeleteSize);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static unsafe void GetResultCount(Directory* directory, ulong* result)
     {
         for (int i = 0; i < directory->ChildCount; i++)
@@ -76,6 +79,7 @@ public sealed class Puzzle7 : Puzzle
         }
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static unsafe void GetSmallestDirectoryToDelete(Directory* directory, ulong* result, ulong needToFree)
     {
         for (int i = 0; i < directory->ChildCount; i++)

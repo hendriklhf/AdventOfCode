@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using HLE;
 
 namespace AdventOfCode.Year2022.Day10;
@@ -9,6 +10,7 @@ public sealed class Puzzle10 : Puzzle
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public (int SignalSum, char[] DisplayOutput) Solve()
     {
         ReadOnlySpan<char> input = _input;
@@ -61,6 +63,7 @@ public sealed class Puzzle10 : Puzzle
         return (signalSum, pixels.ToArray());
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static byte GetPixelIndexFromCycle(byte clockCycle)
     {
         byte pixelIndex = clockCycle switch

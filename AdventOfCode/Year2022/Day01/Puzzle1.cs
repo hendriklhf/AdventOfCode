@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using HLE;
 
 namespace AdventOfCode.Year2022.Day01;
@@ -9,6 +10,7 @@ public sealed class Puzzle1 : Puzzle
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public (uint Max, uint TopThree) Solve()
     {
         ReadOnlySpan<char> input = _input;
@@ -36,6 +38,7 @@ public sealed class Puzzle1 : Puzzle
         return (max, topThreeSum);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static void CheckForHigherTopThree(Span<uint> topThree, uint newValue)
     {
         int minIdx = -1;

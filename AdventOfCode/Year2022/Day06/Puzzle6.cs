@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace AdventOfCode.Year2022.Day06;
 
@@ -12,6 +13,7 @@ public sealed class Puzzle6 : Puzzle
 
     public int SolvePart2() => Solve(14);
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     private int Solve(int distinctCharCount)
     {
         ReadOnlySpan<char> input = _input;
@@ -28,6 +30,7 @@ public sealed class Puzzle6 : Puzzle
         return -1;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static bool ContainsDuplicate(ReadOnlySpan<char> segment)
     {
         int segmentLengthMinus1 = segment.Length - 1;

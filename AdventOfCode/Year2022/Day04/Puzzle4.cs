@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using HLE;
 
 namespace AdventOfCode.Year2022.Day04;
@@ -9,6 +10,7 @@ public sealed class Puzzle4 : Puzzle
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public (ushort FullyContainsCount, ushort OverlapCount) Solve()
     {
         ReadOnlySpan<char> input = _input;
@@ -37,16 +39,19 @@ public sealed class Puzzle4 : Puzzle
         return (fullyContainsCount, overlapCount);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static bool DoesFullyContainTheOther((byte Start, byte End) left, (byte Start, byte End) right)
     {
         return left.Start <= right.Start && left.End >= right.End || right.Start <= left.Start && right.End >= left.End;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static bool DoesOverlap((byte Start, byte End) left, (byte Start, byte End) right)
     {
         return left.Start <= right.Start && left.End >= right.Start || right.Start <= left.Start && right.End >= left.Start;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static ((byte Start, byte End) Left, (byte Start, byte End) Right) ParseLine(ReadOnlySpan<char> line)
     {
         int commaIdx = -1;
@@ -61,11 +66,12 @@ public sealed class Puzzle4 : Puzzle
             break;
         }
 
-        (byte leftStart, byte leftEnd) = ParseRange(line[..commaIdx]);
-        (byte rightStart, byte rightEnd) = ParseRange(line[++commaIdx..]);
+        (byte leftStart, byte leftEnd) = ParseRange(line[new Range(new(0), new(commaIdx))]);
+        (byte rightStart, byte rightEnd) = ParseRange(line[new Range(new(++commaIdx), new(0, true))]);
         return ((leftStart, leftEnd), (rightStart, rightEnd));
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static (byte Start, byte End) ParseRange(ReadOnlySpan<char> range)
     {
         int dashIdx = -1;
@@ -80,6 +86,6 @@ public sealed class Puzzle4 : Puzzle
             break;
         }
 
-        return (byte.Parse(range[..dashIdx]), byte.Parse(range[++dashIdx..]));
+        return (byte.Parse(range[new Range(new(0), new(dashIdx))]), byte.Parse(range[new Range(new(++dashIdx), new(0, true))]));
     }
 }

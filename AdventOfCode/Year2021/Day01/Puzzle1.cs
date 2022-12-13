@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using HLE;
 
 namespace AdventOfCode.Year2021.Day01;
@@ -9,6 +10,7 @@ public sealed class Puzzle1 : Puzzle
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public ushort SolvePart1()
     {
         ReadOnlySpan<char> input = _input;
@@ -33,6 +35,7 @@ public sealed class Puzzle1 : Puzzle
         return count;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public ushort SolvePart2()
     {
         ReadOnlySpan<char> input = _input;
@@ -56,6 +59,7 @@ public sealed class Puzzle1 : Puzzle
         return count;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static ushort GetDepthSum(ReadOnlySpan<char> input, Span<Range> ranges, Span<ushort> depthes, int lineStartIdx)
     {
         ushort result = 0;

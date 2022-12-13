@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using HLE;
 
 namespace AdventOfCode.Year2022.Day08;
@@ -9,6 +10,7 @@ public sealed class Puzzle8 : Puzzle
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public (ushort VisibleCount, uint MaxScenicScore) Solve()
     {
         ReadOnlySpan<char> input = _input;
@@ -60,6 +62,7 @@ public sealed class Puzzle8 : Puzzle
         return (visibleCount, maxScenicScore);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     private static bool IsVisibleInRow(ReadOnlySpan<char> row, char treeSize, int start = 0, int end = 99)
     {
         for (int i = start; i < end; i++)
@@ -74,6 +77,7 @@ public sealed class Puzzle8 : Puzzle
         return true;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     private static bool IsVisibleInColumn(ReadOnlySpan<char> input, Span<Range> ranges, char treeSize, int columnIndex, int start = 0, int end = 99)
     {
         for (int i = start; i < end; i++)
@@ -89,6 +93,7 @@ public sealed class Puzzle8 : Puzzle
         return true;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static void CheckScenicScore(ReadOnlySpan<char> input, Span<Range> ranges, char treeSize, ref uint maxScenicScore, int rowIndex, int columnIndex)
     {
         ReadOnlySpan<char> row = input[ranges[rowIndex]];
@@ -103,6 +108,7 @@ public sealed class Puzzle8 : Puzzle
         }
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static ushort GetLeftScenicScore(ReadOnlySpan<char> row, char treeSize, int start)
     {
         ushort result = 0;
@@ -120,6 +126,7 @@ public sealed class Puzzle8 : Puzzle
         return result;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static ushort GetRightScenicScore(ReadOnlySpan<char> row, char treeSize, int start)
     {
         ushort result = 0;
@@ -137,6 +144,7 @@ public sealed class Puzzle8 : Puzzle
         return result;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static ushort GetTopScenicScore(ReadOnlySpan<char> input, Span<Range> ranges, char treeSize, int columnIndex, int start)
     {
         ushort result = 0;
@@ -155,6 +163,7 @@ public sealed class Puzzle8 : Puzzle
         return result;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     private static ushort GetBottomScenicScore(ReadOnlySpan<char> input, Span<Range> ranges, char treeSize, int columnIndex, int start)
     {
         ushort result = 0;

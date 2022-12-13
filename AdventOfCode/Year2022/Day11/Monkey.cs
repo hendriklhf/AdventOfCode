@@ -28,6 +28,7 @@ public unsafe struct Monkey
         _testFalse = testFalse;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong Inspect(ulong oldWorryLevel)
     {
         InspectCount++;
@@ -43,6 +44,7 @@ public unsafe struct Monkey
         };
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly byte GetThrowTarget(ulong worryLevel)
     {
         return worryLevel % _divideBy == 0 ? _testTrue : _testFalse;

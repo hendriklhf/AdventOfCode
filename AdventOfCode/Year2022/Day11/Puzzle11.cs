@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using HLE;
 
 namespace AdventOfCode.Year2022.Day11;
@@ -12,6 +13,7 @@ public sealed class Puzzle11 : Puzzle
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public unsafe ulong SolvePart1()
     {
         ReadOnlySpan<char> input = _input;
@@ -86,6 +88,7 @@ public sealed class Puzzle11 : Puzzle
         return topTwo[0] * topTwo[1];
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public unsafe ulong SolvePart2()
     {
         ReadOnlySpan<char> input = _input;

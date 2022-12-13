@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using HLE;
 
 namespace AdventOfCode.Year2021.Day02;
@@ -14,6 +15,7 @@ public sealed class Puzzle2 : Puzzle
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public int SolvePart1()
     {
         ReadOnlySpan<char> input = _input;
@@ -44,6 +46,7 @@ public sealed class Puzzle2 : Puzzle
         return x * y;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public int SolvePart2()
     {
         ReadOnlySpan<char> input = _input;
