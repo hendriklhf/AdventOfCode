@@ -17,7 +17,7 @@ public ref struct Queue
         _lastIndex = queue.Length - 1;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveOptimization | MethodImplOptions.AggressiveInlining)]
     public void Enqueue(nuint item)
     {
         if (_enqueueIndex == _lastIndex)

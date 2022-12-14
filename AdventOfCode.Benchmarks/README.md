@@ -49,4 +49,6 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
 |       Year2022_Day10 |     2.677 us |  0.0165 us |  0.0146 us |     504 B | // result had to be allocated, nothing else was allocated
 | Year2022_Day11_Part1 |     4.950 us |  0.0386 us |  0.0361 us |         - |
 | Year2022_Day11_Part2 | 4,374.619 us | 10.8779 us | 10.1752 us |       3 B |
+| Year2022_Day12_Part1 |    93.161 us |  0.3758 us |  0.3515 us |         - |
+| Year2022_Day12_Part2 |    73.455 us |  0.3532 us |  0.2949 us |         - |
 ```
