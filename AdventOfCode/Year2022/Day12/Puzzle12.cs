@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using HLE;
 
@@ -51,7 +50,8 @@ public sealed class Puzzle12 : Puzzle
             }
         }
 
-        Queue<nuint> queue = new();
+        Span<nuint> innerQueue = stackalloc nuint[3000];
+        Queue queue = new(innerQueue);
         Node* startPtr = &start;
         queue.Enqueue((nuint)startPtr);
         Span<nuint> neighbours = stackalloc nuint[4];
@@ -144,7 +144,8 @@ public sealed class Puzzle12 : Puzzle
             }
         }
 
-        Queue<nuint> queue = new();
+        Span<nuint> innerQueue = stackalloc nuint[3000];
+        Queue queue = new(innerQueue);
         Node* endPtr = &end;
         queue.Enqueue((nuint)endPtr);
         Span<nuint> neighbours = stackalloc nuint[4];
