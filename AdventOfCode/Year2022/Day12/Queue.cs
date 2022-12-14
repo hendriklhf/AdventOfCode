@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 namespace AdventOfCode.Year2022.Day12;
 
@@ -16,6 +17,7 @@ public ref struct Queue
         _lastIndex = queue.Length - 1;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void Enqueue(nuint item)
     {
         if (_enqueueIndex == _lastIndex)
@@ -35,15 +37,23 @@ public ref struct Queue
         _count++;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public nuint Dequeue()
     {
         _count--;
         return _queue[_dequeueIndex++];
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool TryDequeue(out nuint item)
     {
+        if (_count == 0)
+        {
+            item = default;
+            return false;
+        }
+
         item = Dequeue();
-        return _count > -1;
+        return true;
     }
 }
