@@ -26,16 +26,16 @@ BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
 ```
 BenchmarkDotNet=v0.13.2, OS=Windows 11 (10.0.22621.819)
 11th Gen Intel Core i7-1185G7 3.00GHz, 1 CPU, 8 logical and 4 physical cores
-.NET SDK=7.0.100
-  [Host]     : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
-  DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
+.NET SDK=7.0.101
+  [Host]     : .NET 7.0.1 (7.0.122.56804), X64 RyuJIT AVX2
+  DefaultJob : .NET 7.0.1 (7.0.122.56804), X64 RyuJIT AVX2
 
 
 |               Method |         Mean |      Error |     StdDev | Allocated |
 |--------------------- |-------------:|-----------:|-----------:|----------:|
 |        Year2022_Day1 |    39.880 us |  0.3252 us |  0.2883 us |         - |
 |        Year2022_Day2 |    47.354 us |  0.1826 us |  0.1708 us |         - |
-|  Year2022_Day3_Part1 |    22.104 us |  0.1429 us |  0.1337 us |         - |
+|  Year2022_Day3_Part1 |    21.787 us |  0.2101 us |  0.1863 us |         - |
 |  Year2022_Day3_Part2 |    42.574 us |  0.0839 us |  0.0701 us |         - |
 |        Year2022_Day4 |    59.618 us |  0.1821 us |  0.1614 us |         - |
 |  Year2022_Day5_Part1 |    37.860 us |  0.2379 us |  0.2225 us |      40 B | // result had to be allocated, nothing else was allocated

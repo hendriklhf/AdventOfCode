@@ -14,8 +14,8 @@ using BenchmarkDotNet.Attributes;
 
 namespace AdventOfCode.Benchmarks;
 
-[MemoryDiagnoser(false)]
 // ReSharper disable once ClassCanBeSealed.Global
+[MemoryDiagnoser(false)]
 public class Benchmarks2022
 {
     private readonly Puzzle1 _puzzle1 = new();
