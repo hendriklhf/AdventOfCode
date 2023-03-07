@@ -66,8 +66,8 @@ public sealed class Puzzle4 : Puzzle
             break;
         }
 
-        (byte leftStart, byte leftEnd) = ParseRange(line[new Range(new(0), new(commaIdx))]);
-        (byte rightStart, byte rightEnd) = ParseRange(line[new Range(new(++commaIdx), new(0, true))]);
+        (byte leftStart, byte leftEnd) = ParseRange(line[..commaIdx]);
+        (byte rightStart, byte rightEnd) = ParseRange(line[++commaIdx..]);
         return ((leftStart, leftEnd), (rightStart, rightEnd));
     }
 
@@ -86,6 +86,6 @@ public sealed class Puzzle4 : Puzzle
             break;
         }
 
-        return (byte.Parse(range[new Range(new(0), new(dashIdx))]), byte.Parse(range[new Range(new(++dashIdx), new(0, true))]));
+        return (byte.Parse(range[..dashIdx]), byte.Parse(range[++dashIdx..]));
     }
 }

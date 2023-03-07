@@ -32,21 +32,18 @@ public sealed class Puzzle10 : Puzzle
         Stack<byte> cycleStack = new(cyclesToCheck, cyclesToCheck.Length);
 
         Span<char> pixels = stackalloc char[240];
-        pixels.Fill(' ');
 
         for (int i = 0; i < 145; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
-            byte cycleCount = (byte)(line[0] == 'n' ? 1 : 2);
+            bool firstLetterIsN = line[0] == 'n';
+            byte cycleCount = (byte)(2 - Unsafe.As<bool, byte>(ref firstLetterIsN));
             Task currentTask = cycleCount == 1 ? Task.Nop : new(sbyte.Parse(line[5..]));
             while (!currentTask.Completed)
             {
                 byte horizontalPixelCoordinate = GetPixelIndexFromCycle(clockCycle);
                 bool drawPixel = horizontalPixelCoordinate == registerValue || horizontalPixelCoordinate == registerValue + 1 || horizontalPixelCoordinate == registerValue - 1;
-                if (drawPixel)
-                {
-                    pixels[clockCycle] = '#';
-                }
+                pixels[clockCycle] = (char)(32 + 3 * Unsafe.As<bool, byte>(ref drawPixel));
 
                 clockCycle++;
                 currentTask.Work();

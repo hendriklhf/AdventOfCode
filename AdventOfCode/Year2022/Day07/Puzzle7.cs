@@ -68,7 +68,7 @@ public sealed class Puzzle7 : Puzzle
     {
         for (int i = 0; i < directory->ChildCount; i++)
         {
-            Directory* child = &directory->ChildDirectories[i];
+            Directory* child = directory->ChildDirectories + i;
             ulong size = child->TotalSize;
             if (size <= _maxDirectorySizeForPart1)
             {
@@ -84,7 +84,7 @@ public sealed class Puzzle7 : Puzzle
     {
         for (int i = 0; i < directory->ChildCount; i++)
         {
-            Directory* child = &directory->ChildDirectories[i];
+            Directory* child = directory->ChildDirectories + i;
             ulong size = child->TotalSize;
             if (size >= needToFree && size < *result)
             {

@@ -12,7 +12,7 @@ public struct Task
 
     private byte _process;
 
-    public static Task Nop { get; } = new();
+    public static Task Nop => new();
 
     public Task()
     {

@@ -61,7 +61,7 @@ public unsafe struct Directory
         ulong result = Size;
         for (int i = 0; i < ChildCount; i++)
         {
-            Directory* child = &ChildDirectories[i];
+            Directory* child = ChildDirectories + i;
             result += child->TotalSize;
         }
 
