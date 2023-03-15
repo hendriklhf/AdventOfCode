@@ -30,10 +30,8 @@ public sealed class Puzzle4 : Puzzle
                 continue;
             }
 
-            if (DoesOverlap(parsedLine.Left, parsedLine.Right))
-            {
-                overlapCount++;
-            }
+            bool doesOverlap = DoesOverlap(parsedLine.Left, parsedLine.Right);
+            overlapCount += Unsafe.As<bool, byte>(ref doesOverlap);
         }
 
         return (fullyContainsCount, overlapCount);
@@ -86,6 +84,6 @@ public sealed class Puzzle4 : Puzzle
             break;
         }
 
-        return (byte.Parse(range[..dashIdx]), byte.Parse(range[++dashIdx..]));
+        return (NumberHelper.ParseByte(range[..dashIdx]), NumberHelper.ParseByte(range[++dashIdx..]));
     }
 }

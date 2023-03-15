@@ -50,7 +50,7 @@ public sealed class Puzzle7 : Puzzle
             {
                 Span<Range> ranges = stackalloc Range[2];
                 line.GetRangesOfSplit(' ', ranges);
-                ulong size = ulong.Parse(line[ranges[0]]);
+                ulong size = NumberHelper.ParseUInt64(line[ranges[0]]);
                 currentDirectory->Size += size;
             }
         }

@@ -45,9 +45,9 @@ public sealed class Puzzle5 : Puzzle
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             line.GetRangesOfSplit(' ', ranges);
-            byte count = byte.Parse(line[ranges[1]]);
-            byte source = (byte)(byte.Parse(line[ranges[3]]) - 1);
-            byte destination = (byte)(byte.Parse(line[ranges[5]]) - 1);
+            byte count = NumberHelper.ParseByte(line[ranges[1]]);
+            byte source = (byte)(NumberHelper.ParseByte(line[ranges[3]]) - 1);
+            byte destination = (byte)(NumberHelper.ParseByte(line[ranges[5]]) - 1);
 
             for (int j = 0; j < count; j++)
             {
@@ -100,9 +100,9 @@ public sealed class Puzzle5 : Puzzle
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             line.GetRangesOfSplit(' ', ranges);
-            byte count = byte.Parse(line[ranges[1]]);
-            byte source = (byte)(byte.Parse(line[ranges[3]]) - 1);
-            byte destination = (byte)(byte.Parse(line[ranges[5]]) - 1);
+            byte count = NumberHelper.ParseByte(line[ranges[1]]);
+            byte source = (byte)(NumberHelper.ParseByte(line[ranges[3]]) - 1);
+            byte destination = (byte)(NumberHelper.ParseByte(line[ranges[5]]) - 1);
 
             Stack stack = new(stackBuffer);
             for (int j = 0; j < count; j++)

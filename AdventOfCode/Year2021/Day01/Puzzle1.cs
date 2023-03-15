@@ -19,7 +19,7 @@ public sealed class Puzzle1 : Puzzle
 
         ushort count = 0;
         ReadOnlySpan<char> firstLine = input[lineRanges[0]];
-        ushort previousDepth = ushort.Parse(firstLine);
+        ushort previousDepth = NumberHelper.ParseUInt16(firstLine);
         for (int i = 1; i < 2000; i++)
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
@@ -74,7 +74,7 @@ public sealed class Puzzle1 : Puzzle
             }
 
             ReadOnlySpan<char> line = input[ranges[idx]];
-            depth = ushort.Parse(line);
+            depth = NumberHelper.ParseUInt16(line);
             depthes[idx] = depth;
             result += depth;
         }

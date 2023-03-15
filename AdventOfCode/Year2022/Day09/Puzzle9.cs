@@ -26,7 +26,7 @@ public sealed class Puzzle9 : Puzzle
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             char direction = line[0];
-            byte count = byte.Parse(line[2..]);
+            byte count = NumberHelper.ParseByte(line[2..]);
 
             int* headCoordinate = null;
             int movement = 0;
@@ -96,7 +96,7 @@ public sealed class Puzzle9 : Puzzle
         {
             ReadOnlySpan<char> line = input[lineRanges[i]];
             char direction = line[0];
-            byte count = byte.Parse(line[2..]);
+            byte count = NumberHelper.ParseByte(line[2..]);
 
             ref int headCoordinate = ref Unsafe.NullRef<int>();
             int movement = 0;

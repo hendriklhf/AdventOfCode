@@ -31,7 +31,7 @@ public sealed class Puzzle1 : Puzzle
                 continue;
             }
 
-            elfTotal += uint.Parse(line);
+            elfTotal += NumberHelper.ParseUInt32(line);
         }
 
         uint topThreeSum = topThree[0] + topThree[1] + topThree[2];
