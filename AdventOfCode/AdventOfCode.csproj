@@ -2,37 +2,14 @@
 
     <PropertyGroup>
         <OutputType>Library</OutputType>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>disable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <RepositoryUrl>https://github.com/Sterbehilfe/AdventOfCode</RepositoryUrl>
-        <DebugType>embedded</DebugType>
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="Year2021\Day01\Input.txt" />
-        <EmbeddedResource Include="Year2021\Day02\Input.txt" />
-        <EmbeddedResource Include="Year2021\Day03\Input.txt" />
+        <PackageReference Include="HLE" Version="2.1.7" />
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="Year2022\Day01\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day02\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day03\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day04\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day05\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day06\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day07\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day08\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day09\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day10\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day11\Input.txt" />
-        <EmbeddedResource Include="Year2022\Day12\Input.txt" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="HLE" Version="2.1.2.1" />
+      <Folder Include="Year2023\" />
     </ItemGroup>
 
 </Project>

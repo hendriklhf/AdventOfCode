@@ -1,5 +1,8 @@
-﻿using AdventOfCode.Benchmarks;
-using BenchmarkDotNet.Running;
+﻿namespace AdventOfCode.Benchmarks;
 
-//BenchmarkRunner.Run<Benchmarks2021>();
-BenchmarkRunner.Run<Benchmarks2022>();
+public static class Program
+{
+    private static void Main()
+    {
+    }
+}

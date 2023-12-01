@@ -1,4 +1,8 @@
-﻿using AdventOfCode.Year2022.Day12;
+﻿namespace AdventOfCode.Runner;
 
-Console.WriteLine(new Puzzle12().SolvePart1());
-Console.WriteLine(new Puzzle12().SolvePart2());
+public static class Program
+{
+    private static void Main()
+    {
+    }
+}
