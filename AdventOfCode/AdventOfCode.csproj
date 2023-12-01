@@ -5,11 +5,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="HLE" Version="2.1.7" />
+        <PackageReference Include="HLE" Version="2.1.8"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Year2023\" />
+        <None Include="..\README.md"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Year2023\Day1\input.txt"/>
     </ItemGroup>
 
 </Project>

@@ -13,4 +13,14 @@
         <NeutralLanguage>en-US</NeutralLanguage>
     </PropertyGroup>
 
+    <!-- Reason for the following two property groups: https://github.com/dotnet/roslyn/issues/41640. -->
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>CS1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <NoWarn>IDE0005</NoWarn>
+    </PropertyGroup>
+
 </Project>
