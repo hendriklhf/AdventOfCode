@@ -14,6 +14,7 @@
 
     <ItemGroup>
         <EmbeddedResource Include="Year2023\Day1\input.txt"/>
+        <EmbeddedResource Include="Year2023\Day2\input.txt" />
     </ItemGroup>
 
 </Project>
