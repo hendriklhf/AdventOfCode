@@ -126,10 +126,8 @@ public sealed unsafe class Puzzle2() : Puzzle("Year2023.Day2.input.txt")
             }
 
             Take take = HandleTake(takeText);
-            byte* roundBytes = (byte*)round;
-            roundBytes += (int)take.Color * sizeof(int);
-            int* roundField = (int*)roundBytes;
-            *roundField = take.Count;
+            int* roundAsInt = (int*)round;
+            roundAsInt[(int)take.Color] = take.Count;
 
             if (roundText.Length == 0)
             {
