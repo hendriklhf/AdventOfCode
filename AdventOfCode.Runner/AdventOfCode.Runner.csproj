@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\AdventOfCode\AdventOfCode.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdventOfCode\AdventOfCode.csproj"/>
+  </ItemGroup>
 
 </Project>

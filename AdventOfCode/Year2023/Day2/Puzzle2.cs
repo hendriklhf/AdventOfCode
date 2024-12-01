@@ -3,7 +3,7 @@ using HLE.Numerics;
 
 namespace AdventOfCode.Year2023.Day2;
 
-public sealed unsafe class Puzzle2() : Puzzle("Year2023.Day2.input.txt")
+public sealed unsafe class Puzzle2() : Puzzle("AdventOfCode.Year2023.Day2.input.txt")
 {
     private const int RedCubeCount = 12;
     private const int GreenCubeCount = 13;
@@ -17,12 +17,12 @@ public sealed unsafe class Puzzle2() : Puzzle("Year2023.Day2.input.txt")
 
     public int SolvePartOne()
     {
-        ReadOnlySpan<byte> input = _input.AsSpan();
+        ReadOnlySpan<byte> input = Input;
 
         int gameIdSum = 0;
         int currentGameId = 1;
 
-        while (true)
+        do
         {
             int indexOfLineEnd = input.IndexOf(CarriageReturn);
             ReadOnlySpan<byte> line = input[..indexOfLineEnd];
@@ -40,22 +40,19 @@ public sealed unsafe class Puzzle2() : Puzzle("Year2023.Day2.input.txt")
 
             currentGameId++;
             input = input[(indexOfLineEnd + 2)..];
-            if (input.Length == 0)
-            {
-                break;
-            }
         }
+        while (input.Length != 0);
 
         return gameIdSum;
     }
 
     public int SolvePartTwo()
     {
-        ReadOnlySpan<byte> input = _input.AsSpan();
+        ReadOnlySpan<byte> input = Input;
 
         int powerSum = 0;
 
-        while (true)
+        do
         {
             int indexOfLineEnd = input.IndexOf(CarriageReturn);
             ReadOnlySpan<byte> line = input[..indexOfLineEnd];
@@ -68,18 +65,15 @@ public sealed unsafe class Puzzle2() : Puzzle("Year2023.Day2.input.txt")
             powerSum += game.MaxRed * game.MaxGreen * game.MaxBlue;
 
             input = input[(indexOfLineEnd + 2)..];
-            if (input.Length == 0)
-            {
-                break;
-            }
         }
+        while (input.Length != 0);
 
         return powerSum;
     }
 
     private static void HandleGame(ReadOnlySpan<byte> line, Game* game)
     {
-        while (true)
+        do
         {
             int index = line.IndexOf(SemiColon);
             ReadOnlySpan<byte> roundText;
@@ -100,17 +94,13 @@ public sealed unsafe class Puzzle2() : Puzzle("Year2023.Day2.input.txt")
             game->MaxRed = int.Max(round.Red, game->MaxRed);
             game->MaxGreen = int.Max(round.Green, game->MaxGreen);
             game->MaxBlue = int.Max(round.Blue, game->MaxBlue);
-
-            if (line.Length == 0)
-            {
-                break;
-            }
         }
+        while (line.Length != 0);
     }
 
     private static void HandleRound(ReadOnlySpan<byte> roundText, Round* round)
     {
-        while (true)
+        do
         {
             int index = roundText.IndexOf(Comma);
             ReadOnlySpan<byte> takeText;
@@ -128,12 +118,8 @@ public sealed unsafe class Puzzle2() : Puzzle("Year2023.Day2.input.txt")
             Take take = HandleTake(takeText);
             int* roundAsInt = (int*)round;
             roundAsInt[(int)take.Color] = take.Count;
-
-            if (roundText.Length == 0)
-            {
-                break;
-            }
         }
+        while (roundText.Length != 0);
     }
 
     private static Take HandleTake(ReadOnlySpan<byte> takeText)

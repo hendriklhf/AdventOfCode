@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 
 namespace AdventOfCode.Year2023.Day1;
 
-public sealed class Puzzle1() : Puzzle("Year2023.Day1.input.txt")
+public sealed class Puzzle1() : Puzzle("AdventOfCode.Year2023.Day1.input.txt")
 {
     private static readonly SearchValues<byte> s_digitSearchValues = SearchValues.Create("123456789"u8);
     private static readonly SearchValues<byte> s_digitAndTextSearchValues = SearchValues.Create("123456789otfsen"u8);
 
-    private const byte ZeroChar = (byte)'0';
+    private const byte Zero = (byte)'0';
 
     public int SolvePartOne()
     {
@@ -18,8 +18,8 @@ public sealed class Puzzle1() : Puzzle("Year2023.Day1.input.txt")
 
         int sum = 0;
 
-        ReadOnlySpan<byte> input = _input.AsSpan();
-        while (true)
+        ReadOnlySpan<byte> input = Input;
+        do
         {
             int indexOfNewLine = input.IndexOf(CarriageReturn);
             ReadOnlySpan<byte> line = input[..indexOfNewLine];
@@ -30,18 +30,15 @@ public sealed class Puzzle1() : Puzzle("Year2023.Day1.input.txt")
             byte firstDigitUtf8 = line[firstDigitIndex];
             byte lastDigitUtf8 = line[lastDigitIndex];
 
-            int firstDigit = firstDigitUtf8 - ZeroChar;
-            int lastDigit = lastDigitUtf8 - ZeroChar;
+            int firstDigit = firstDigitUtf8 - Zero;
+            int lastDigit = lastDigitUtf8 - Zero;
 
             int number = firstDigit * 10 + lastDigit;
             sum += number;
 
             input = input[(indexOfNewLine + 2)..];
-            if (input.Length == 0)
-            {
-                break;
-            }
         }
+        while (input.Length != 0);
 
         return sum;
     }
@@ -52,8 +49,8 @@ public sealed class Puzzle1() : Puzzle("Year2023.Day1.input.txt")
 
         int sum = 0;
 
-        ReadOnlySpan<byte> input = _input.AsSpan();
-        while (true)
+        ReadOnlySpan<byte> input = Input;
+        do
         {
             int indexOfNewLine = input.IndexOf(CarriageReturn);
             ReadOnlySpan<byte> line = input[..indexOfNewLine];
@@ -61,11 +58,8 @@ public sealed class Puzzle1() : Puzzle("Year2023.Day1.input.txt")
             sum += FindNumber(line);
 
             input = input[(indexOfNewLine + 2)..];
-            if (input.Length == 0)
-            {
-                break;
-            }
         }
+        while (input.Length != 0);
 
         return sum;
     }
@@ -82,7 +76,7 @@ public sealed class Puzzle1() : Puzzle("Year2023.Day1.input.txt")
             byte firstUtf8 = linePtr[firstIndex];
             if (IsDigit(firstUtf8))
             {
-                firstDigit = firstUtf8 - ZeroChar;
+                firstDigit = firstUtf8 - Zero;
             }
             else
             {
@@ -96,7 +90,9 @@ public sealed class Puzzle1() : Puzzle("Year2023.Day1.input.txt")
         if (line.Length == 0)
         {
             secondDigit = firstDigit;
+#pragma warning disable S907
             goto Result;
+#pragma warning restore S907
         }
 
         ReadOnlySpan<byte> lineSearch = line;
@@ -107,7 +103,7 @@ public sealed class Puzzle1() : Puzzle("Year2023.Day1.input.txt")
             byte secondUtf8 = linePtr[secondIndex];
             if (IsDigit(secondUtf8))
             {
-                secondDigit = secondUtf8 - ZeroChar;
+                secondDigit = secondUtf8 - Zero;
             }
             else
             {
@@ -131,7 +127,7 @@ public sealed class Puzzle1() : Puzzle("Year2023.Day1.input.txt")
             secondDigit = firstDigit;
         }
 
-        Result:
+    Result:
         return firstDigit * 10 + secondDigit;
     }
 

@@ -1,13 +1,14 @@
 using System;
-using AdventOfCode.Year2023.Day2;
+using AdventOfCode.Year2024.Day1;
 
 namespace AdventOfCode.Runner;
 
-public static class Program
+internal static class Program
 {
     private static void Main()
     {
-        Puzzle2 p = new();
-        Console.WriteLine(p.SolvePartTwo());
+        Puzzle1 p1 = new();
+        int result = p1.SolvePartTwo();
+        Console.WriteLine(result);
     }
 }

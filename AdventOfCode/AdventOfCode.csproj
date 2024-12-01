@@ -1,20 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Library</OutputType>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <UseDefaultAnalyzerPackages>true</UseDefaultAnalyzerPackages>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="HLE" Version="2.1.8"/>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HLE"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <None Include="..\README.md"/>
-    </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Year2023\Day1\input.txt"/>
+    <EmbeddedResource Include="Year2023\Day2\input.txt"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <EmbeddedResource Include="Year2023\Day1\input.txt"/>
-        <EmbeddedResource Include="Year2023\Day2\input.txt" />
-    </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Year2024\Day1\input.txt"/>
+  </ItemGroup>
 
 </Project>
