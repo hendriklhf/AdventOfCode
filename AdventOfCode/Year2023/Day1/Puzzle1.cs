@@ -14,14 +14,14 @@ public sealed class Puzzle1() : Puzzle("AdventOfCode.Year2023.Day1.input.txt")
 
     public int SolvePartOne()
     {
-        const byte CarriageReturn = (byte)'\r';
+        const byte LineFeed = (byte)'\n';
 
         int sum = 0;
 
-        ReadOnlySpan<byte> input = Input;
+        ReadOnlySpan<byte> input = InputUtf8;
         do
         {
-            int indexOfNewLine = input.IndexOf(CarriageReturn);
+            int indexOfNewLine = input.IndexOf(LineFeed);
             ReadOnlySpan<byte> line = input[..indexOfNewLine];
 
             int firstDigitIndex = line.IndexOfAny(s_digitSearchValues);
@@ -36,7 +36,7 @@ public sealed class Puzzle1() : Puzzle("AdventOfCode.Year2023.Day1.input.txt")
             int number = firstDigit * 10 + lastDigit;
             sum += number;
 
-            input = input[(indexOfNewLine + 2)..];
+            input = input[(indexOfNewLine + 1)..];
         }
         while (input.Length != 0);
 
@@ -45,19 +45,19 @@ public sealed class Puzzle1() : Puzzle("AdventOfCode.Year2023.Day1.input.txt")
 
     public int SolvePartTwo()
     {
-        const byte CarriageReturn = (byte)'\r';
+        const byte LineFeed = (byte)'\n';
 
         int sum = 0;
 
-        ReadOnlySpan<byte> input = Input;
+        ReadOnlySpan<byte> input = InputUtf8;
         do
         {
-            int indexOfNewLine = input.IndexOf(CarriageReturn);
+            int indexOfNewLine = input.IndexOf(LineFeed);
             ReadOnlySpan<byte> line = input[..indexOfNewLine];
 
             sum += FindNumber(line);
 
-            input = input[(indexOfNewLine + 2)..];
+            input = input[(indexOfNewLine + 1)..];
         }
         while (input.Length != 0);
 

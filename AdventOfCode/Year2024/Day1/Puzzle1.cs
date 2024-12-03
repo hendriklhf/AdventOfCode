@@ -14,13 +14,12 @@ public sealed unsafe class Puzzle1() : Puzzle("AdventOfCode.Year2024.Day1.input.
     {
         int* leftNumbers = stackalloc int[LineCount];
         int* rightNumbers = stackalloc int[LineCount];
-        ReadOnlySpan<byte> input = Input;
+        ReadOnlySpan<byte> input = InputUtf8;
 
         uint i = 0;
-        int index = input.IndexOf((byte)'\n');
-        do
+        foreach (Range range in input.Split((byte)'\n'))
         {
-            ReadOnlySpan<byte> line = input[..Unsafe.As<int, Index>(ref index)];
+            ReadOnlySpan<byte> line = input[range];
 
             ReadOnlySpan<byte> leftNumber = line[..5];
             leftNumbers[i] = NumberHelpers.ParsePositiveNumber<int>(leftNumber);
@@ -28,15 +27,8 @@ public sealed unsafe class Puzzle1() : Puzzle("AdventOfCode.Year2024.Day1.input.
             ReadOnlySpan<byte> rightNumber = line[8..];
             rightNumbers[i] = NumberHelpers.ParsePositiveNumber<int>(rightNumber);
 
-            if (++i == LineCount)
-            {
-                break;
-            }
-
-            input = input[(index + 1)..];
-            index = input.IndexOf((byte)'\n');
+            i++;
         }
-        while (true);
 
         new Span<uint>(leftNumbers, LineCount).Sort();
         new Span<uint>(rightNumbers, LineCount).Sort();
@@ -72,13 +64,12 @@ public sealed unsafe class Puzzle1() : Puzzle("AdventOfCode.Year2024.Day1.input.
     {
         int* leftNumbers = stackalloc int[LineCount];
         int* rightNumbers = stackalloc int[LineCount];
-        ReadOnlySpan<byte> input = Input;
+        ReadOnlySpan<byte> input = InputUtf8;
 
         uint i = 0;
-        int index = input.IndexOf((byte)'\n');
-        do
+        foreach (Range range in input.Split((byte)'\n'))
         {
-            ReadOnlySpan<byte> line = input[..Unsafe.As<int, Index>(ref index)];
+            ReadOnlySpan<byte> line = input[range];
 
             ReadOnlySpan<byte> leftNumber = line[..5];
             leftNumbers[i] = NumberHelpers.ParsePositiveNumber<int>(leftNumber);
@@ -86,15 +77,8 @@ public sealed unsafe class Puzzle1() : Puzzle("AdventOfCode.Year2024.Day1.input.
             ReadOnlySpan<byte> rightNumber = line[8..];
             rightNumbers[i] = NumberHelpers.ParsePositiveNumber<int>(rightNumber);
 
-            if (++i == LineCount)
-            {
-                break;
-            }
-
-            input = input[(index + 1)..];
-            index = input.IndexOf((byte)'\n');
+            i++;
         }
-        while (true);
 
         int remaining = LineCount;
         Vector512<int> sum = Vector512<int>.Zero;

@@ -17,7 +17,7 @@ public sealed unsafe class Puzzle2() : Puzzle("AdventOfCode.Year2023.Day2.input.
 
     public int SolvePartOne()
     {
-        ReadOnlySpan<byte> input = Input;
+        ReadOnlySpan<byte> input = InputUtf8;
 
         int gameIdSum = 0;
         int currentGameId = 1;
@@ -48,7 +48,7 @@ public sealed unsafe class Puzzle2() : Puzzle("AdventOfCode.Year2023.Day2.input.
 
     public int SolvePartTwo()
     {
-        ReadOnlySpan<byte> input = Input;
+        ReadOnlySpan<byte> input = InputUtf8;
 
         int powerSum = 0;
 

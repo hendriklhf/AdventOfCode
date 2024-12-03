@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using HLE.Memory;
 using HLE.Resources;
 
@@ -6,9 +7,17 @@ namespace AdventOfCode;
 
 public abstract class Puzzle
 {
-    private protected ReadOnlySpan<byte> Input => _input;
+    /// <summary>
+    /// Gets the normalized input data for the puzzle.
+    /// CRLF line endings are normalized to LF and
+    /// doesn't end with a LF.
+    /// </summary>
+    private protected ReadOnlySpan<byte> InputUtf8 => _inputUtf8;
 
-    private readonly byte[] _input;
+    private protected ReadOnlySpan<char> Input => _input;
+
+    private readonly byte[] _inputUtf8;
+    private readonly string _input;
 
     private static readonly ResourceReader s_reader = new(typeof(Puzzle).Assembly);
 
@@ -39,6 +48,7 @@ public abstract class Puzzle
             buffer = buffer[..^1];
         }
 
-        _input = buffer.ToArray();
+        _inputUtf8 = buffer.ToArray();
+        _input = Encoding.UTF8.GetString(_inputUtf8);
     }
 }
