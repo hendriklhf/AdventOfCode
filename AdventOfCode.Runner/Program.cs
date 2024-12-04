@@ -1,5 +1,5 @@
 using System;
-using AdventOfCode.Year2024.Day3;
+using AdventOfCode.Year2024.Day4;
 
 namespace AdventOfCode.Runner;
 
@@ -7,8 +7,8 @@ internal static class Program
 {
     private static void Main()
     {
-        Puzzle3 p1 = new();
-        uint result = p1.SolvePartTwo();
+        Puzzle4 p = new();
+        uint result = p.SolvePartOne();
         Console.WriteLine(result);
     }
 }

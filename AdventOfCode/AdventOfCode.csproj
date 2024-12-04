@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <UseDefaultAnalyzerPackages>true</UseDefaultAnalyzerPackages>
-    <NoWarn>$(NoWarn);S106</NoWarn>
+    <NoWarn>$(NoWarn);S106;S907</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +19,7 @@
     <EmbeddedResource Include="Year2024\Day1\input.txt"/>
     <EmbeddedResource Include="Year2024\Day2\input.txt"/>
     <EmbeddedResource Include="Year2024\Day3\input.txt"/>
+    <EmbeddedResource Include="Year2024\Day4\input.txt"/>
   </ItemGroup>
 
 </Project>

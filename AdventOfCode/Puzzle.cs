@@ -1,20 +1,29 @@
 using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using HLE.Memory;
 using HLE.Resources;
 
 namespace AdventOfCode;
 
-public abstract class Puzzle
+public abstract unsafe class Puzzle
 {
     /// <summary>
-    /// Gets the normalized input data for the puzzle.
+    /// Gets the normalized input data in UTF-8 for the puzzle.
     /// CRLF line endings are normalized to LF and
     /// doesn't end with a LF.
     /// </summary>
     private protected ReadOnlySpan<byte> InputUtf8 => _inputUtf8;
 
+    /// <summary>
+    /// Gets the normalized input data for the puzzle.
+    /// CRLF line endings are normalized to LF and
+    /// doesn't end with a LF.
+    /// </summary>
     private protected ReadOnlySpan<char> Input => _input;
+
+    private protected byte* InputUtf8Pointer => (byte*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(InputUtf8));
 
     private readonly byte[] _inputUtf8;
     private readonly string _input;
