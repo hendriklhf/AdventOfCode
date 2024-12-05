@@ -9,7 +9,7 @@ public sealed unsafe class Puzzle4 : Puzzle
     private readonly uint _lineLength;
     private readonly uint _lineCount;
 
-    private const uint NeedleLength = 4;
+    private const uint XmasLength = 4;
     private const byte X = (byte)'X';
     private const byte M = (byte)'M';
     private const byte A = (byte)'A';
@@ -77,7 +77,7 @@ public sealed unsafe class Puzzle4 : Puzzle
             }
 
             offset = index + 1;
-            index = input.SliceUnsafe(offset..).IndexOf((byte)'X');
+            index = input.SliceUnsafe(offset..).IndexOf(X);
         }
 
         return result;
@@ -85,7 +85,7 @@ public sealed unsafe class Puzzle4 : Puzzle
 
     private bool CheckTop(byte* input, uint x, uint y)
     {
-        if (y < NeedleLength - 1)
+        if (y < XmasLength - 1)
         {
             return false;
         }
@@ -97,7 +97,7 @@ public sealed unsafe class Puzzle4 : Puzzle
 
     private bool CheckTopRight(byte* input, uint x, uint y)
     {
-        if (y < NeedleLength - 1 || x > _lineLength - NeedleLength)
+        if (y < XmasLength - 1 || x > _lineLength - XmasLength)
         {
             return false;
         }
@@ -109,7 +109,7 @@ public sealed unsafe class Puzzle4 : Puzzle
 
     private bool CheckRight(byte* input, uint x, uint y)
     {
-        if (x > _lineLength - NeedleLength)
+        if (x > _lineLength - XmasLength)
         {
             return false;
         }
@@ -121,7 +121,7 @@ public sealed unsafe class Puzzle4 : Puzzle
 
     private bool CheckBottomRight(byte* input, uint x, uint y)
     {
-        if (x > _lineLength - NeedleLength || y > _lineCount - NeedleLength)
+        if (x > _lineLength - XmasLength || y > _lineCount - XmasLength)
         {
             return false;
         }
@@ -133,7 +133,7 @@ public sealed unsafe class Puzzle4 : Puzzle
 
     private bool CheckBottom(byte* input, uint x, uint y)
     {
-        if (y > _lineCount - NeedleLength)
+        if (y > _lineCount - XmasLength)
         {
             return false;
         }
@@ -145,7 +145,7 @@ public sealed unsafe class Puzzle4 : Puzzle
 
     private bool CheckBottomLeft(byte* input, uint x, uint y)
     {
-        if (y > _lineCount - NeedleLength || x < NeedleLength - 1)
+        if (y > _lineCount - XmasLength || x < XmasLength - 1)
         {
             return false;
         }
@@ -157,7 +157,7 @@ public sealed unsafe class Puzzle4 : Puzzle
 
     private bool CheckLeft(byte* input, uint x, uint y)
     {
-        if (x < NeedleLength - 1)
+        if (x < XmasLength - 1)
         {
             return false;
         }
@@ -169,7 +169,7 @@ public sealed unsafe class Puzzle4 : Puzzle
 
     private bool CheckTopLeft(byte* input, uint x, uint y)
     {
-        if (y < NeedleLength - 1 || x < NeedleLength - 1)
+        if (y < XmasLength - 1 || x < XmasLength - 1)
         {
             return false;
         }
@@ -177,6 +177,56 @@ public sealed unsafe class Puzzle4 : Puzzle
         return input[ConvertCoordinatesToIndex(x - 1, y - 1)] == M &&
                input[ConvertCoordinatesToIndex(x - 2, y - 2)] == A &&
                input[ConvertCoordinatesToIndex(x - 3, y - 3)] == S;
+    }
+
+    [SkipLocalsInit]
+    public uint SolvePartTwo()
+    {
+        ReadOnlySpan<byte> input = InputUtf8;
+        byte* inputPtr = InputUtf8Pointer;
+        uint result = 0;
+
+        int offset = 0;
+        int index = input.IndexOf(A);
+        while (index >= 0)
+        {
+            index += offset;
+
+            (uint x, uint y) = ConvertIndexToCoordinates(index);
+
+            if (x < 1 || y < 1 || x > _lineLength - 2 || y > _lineCount - 2)
+            {
+                goto Continue;
+            }
+
+            bool topLeftToBottomRight = inputPtr[ConvertCoordinatesToIndex(x - 1, y - 1)] == M &&
+                                        inputPtr[ConvertCoordinatesToIndex(x + 1, y + 1)] == S;
+
+            bool bottomRightToTopLeft = inputPtr[ConvertCoordinatesToIndex(x + 1, y + 1)] == M &&
+                                        inputPtr[ConvertCoordinatesToIndex(x - 1, y - 1)] == S;
+
+            if (!topLeftToBottomRight && !bottomRightToTopLeft)
+            {
+                goto Continue;
+            }
+
+            bool topRightToBottomLeft = inputPtr[ConvertCoordinatesToIndex(x + 1, y - 1)] == M &&
+                                        inputPtr[ConvertCoordinatesToIndex(x - 1, y + 1)] == S;
+
+            bool bottomLeftToTopRight = inputPtr[ConvertCoordinatesToIndex(x - 1, y + 1)] == M &&
+                                        inputPtr[ConvertCoordinatesToIndex(x + 1, y - 1)] == S;
+
+            if (topRightToBottomLeft || bottomLeftToTopRight)
+            {
+                result++;
+            }
+
+        Continue:
+            offset = index + 1;
+            index = input.SliceUnsafe(offset..).IndexOf(A);
+        }
+
+        return result;
     }
 
     private (uint X, uint Y) ConvertIndexToCoordinates(int index)

@@ -30,6 +30,7 @@ AMD Ryzen 9 7950X, 1 CPU, 32 logical and 16 physical cores
 | Day3_Part1 | 26.60 us | 0.183 us | 0.171 us |         - |
 | Day3_Part2 | 26.51 us | 0.191 us | 0.178 us |         - |
 | Day4_Part1 | 38.69 us | 0.306 us | 0.287 us |         - |
+| Day4_Part2 | 23.33 us | 0.278 us | 0.260 us |         - |
 ```
 
 ### 2023

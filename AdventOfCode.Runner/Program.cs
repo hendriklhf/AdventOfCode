@@ -8,7 +8,7 @@ internal static class Program
     private static void Main()
     {
         Puzzle4 p = new();
-        uint result = p.SolvePartOne();
+        uint result = p.SolvePartTwo();
         Console.WriteLine(result);
     }
 }

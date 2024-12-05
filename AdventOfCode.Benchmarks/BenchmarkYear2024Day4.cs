@@ -11,4 +11,7 @@ public class BenchmarkYear2024Day4 : Bench
 
     [Benchmark]
     public uint Day4_Part1() => s_puzzle4.SolvePartOne();
+
+    [Benchmark]
+    public uint Day4_Part2() => s_puzzle4.SolvePartTwo();
 }

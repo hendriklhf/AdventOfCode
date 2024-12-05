@@ -9,4 +9,7 @@ public sealed class Puzzle4Test
 
     [Fact]
     public void SolvePartOneTest() => Assert.Equal(2534u, _puzzle.SolvePartOne());
+
+    [Fact]
+    public void SolvePartTwoTest() => Assert.Equal(1866u, _puzzle.SolvePartTwo());
 }
