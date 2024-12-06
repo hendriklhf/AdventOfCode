@@ -8,14 +8,14 @@ public sealed unsafe class Puzzle6 : Puzzle
 {
     private readonly uint _lineLength;
     private readonly uint _lineCount;
-    private readonly HashSet<(int, int)> _visited;
+    private readonly HashSet<int> _visited;
 
     public Puzzle6() : base("AdventOfCode.Year2024.Day6.input.txt")
     {
         ReadOnlySpan<byte> input = InputUtf8;
         _lineLength = (uint)input.IndexOf((byte)'\n');
         _lineCount = (uint)(input.Count((byte)'\n')) + 1;
-        _visited = new((int)(_lineCount * _lineLength));
+        _visited = new((int)(_lineLength * _lineCount));
     }
 
     [SkipLocalsInit]
@@ -29,11 +29,10 @@ public sealed unsafe class Puzzle6 : Puzzle
             (-1, 0)
         };
 
-        ReadOnlySpan<byte> input = InputUtf8;
         byte* inputPtr = InputUtf8Pointer;
-        int startIndex = input.IndexOf((byte)'^');
+        int startIndex = InputUtf8.IndexOf((byte)'^');
         (int X, int Y) position = ConvertIndexToCoordinates(startIndex);
-        _visited.Add(position);
+        _visited.Add(position.GetHashCode());
         uint direction = 0;
 
         while (true)
@@ -53,7 +52,7 @@ public sealed unsafe class Puzzle6 : Puzzle
             }
 
             position = newPosition;
-            _visited.Add(position);
+            _visited.Add(position.GetHashCode());
         }
     }
 
