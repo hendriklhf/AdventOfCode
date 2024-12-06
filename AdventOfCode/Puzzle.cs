@@ -7,26 +7,28 @@ using HLE.Resources;
 
 namespace AdventOfCode;
 
-public abstract unsafe class Puzzle
+public abstract unsafe class Puzzle : IDisposable
 {
     /// <summary>
     /// Gets the normalized input data in UTF-8 for the puzzle.
     /// CRLF line endings are normalized to LF and
     /// doesn't end with a LF.
     /// </summary>
-    private protected ReadOnlySpan<byte> InputUtf8 => _inputUtf8;
+    private protected ReadOnlySpan<byte> InputUtf8 => _inputUtf8.AsSpan();
 
     /// <summary>
     /// Gets the normalized input data for the puzzle.
     /// CRLF line endings are normalized to LF and
     /// doesn't end with a LF.
     /// </summary>
-    private protected ReadOnlySpan<char> Input => _input;
+    private protected ReadOnlySpan<char> Input => _input.AsSpan();
 
     private protected byte* InputUtf8Pointer => (byte*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(InputUtf8));
 
-    private readonly byte[] _inputUtf8;
-    private readonly string _input;
+    private protected char* InputPointer => (char*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(Input));
+
+    private readonly NativeMemory<byte> _inputUtf8;
+    private readonly NativeMemory<char> _input;
 
     private static readonly ResourceReader s_reader = new(typeof(Puzzle).Assembly);
 
@@ -57,7 +59,26 @@ public abstract unsafe class Puzzle
             buffer = buffer[..^1];
         }
 
-        _inputUtf8 = buffer.ToArray();
-        _input = Encoding.UTF8.GetString(_inputUtf8);
+        _inputUtf8 = new(buffer.Length, false);
+        buffer.CopyTo(_inputUtf8.AsSpan());
+
+        using RentedArray<char> chars = ArrayPool<char>.Shared.RentAsRentedArray(Encoding.UTF8.GetMaxCharCount(buffer.Length));
+        int charCount = Encoding.UTF8.GetChars(buffer, chars.AsSpan());
+        _input = new(charCount, false);
+        chars.AsSpan(..charCount).CopyTo(_input.AsSpan());
+    }
+
+    ~Puzzle() => Dispose(false);
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool _)
+    {
+        _inputUtf8.Dispose();
+        _input.Dispose();
     }
 }
