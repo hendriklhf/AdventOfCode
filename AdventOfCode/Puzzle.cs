@@ -76,7 +76,8 @@ public abstract unsafe class Puzzle : IDisposable
         GC.SuppressFinalize(this);
     }
 
-    protected virtual void Dispose(bool _)
+    // ReSharper disable once UnusedParameter.Global
+    protected virtual void Dispose(bool disposing)
     {
         _inputUtf8.Dispose();
         _input.Dispose();
