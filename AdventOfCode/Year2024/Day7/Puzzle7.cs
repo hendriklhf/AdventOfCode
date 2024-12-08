@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using HLE.Collections;
 using HLE.Numerics;
 
@@ -43,36 +42,21 @@ public sealed unsafe class Puzzle7() : Puzzle("AdventOfCode.Year2024.Day7.input.
     }
 
     private static bool CheckLine(ulong testValue, uint* numbers, int numbersLength)
+        => CheckLine(testValue, *numbers, numbers + 1, numbers + numbersLength - 1);
+
+    private static bool CheckLine(ulong testValue, ulong value, uint* numbers, uint* end)
     {
-        Debug.Assert(numbersLength <= 16);
-
-        ushort operators = 0;
-        int last = numbersLength - 1;
-        ushort end = (ushort)(ushort.MaxValue >> (16 - last));
-        do
+        if (numbers == end)
         {
-            ulong result = *numbers;
-            for (int i = 0; i < last; i++)
-            {
-                if ((operators & (1 << i)) == 0)
-                {
-                    result += numbers[i + 1];
-                }
-                else
-                {
-                    result *= numbers[i + 1];
-                }
-            }
-
-            if (result == testValue)
-            {
-                return true;
-            }
-
-            operators++;
+            return value + *numbers == testValue || value * *numbers == testValue;
         }
-        while (operators <= end);
 
-        return false;
+        if (value >= testValue)
+        {
+            return false;
+        }
+
+        return CheckLine(testValue, value + *numbers, numbers + 1, end) ||
+               CheckLine(testValue, value * *numbers, numbers + 1, end);
     }
 }
