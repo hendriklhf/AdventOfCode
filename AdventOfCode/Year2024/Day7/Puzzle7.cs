@@ -1,15 +1,37 @@
 using System;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using HLE.Collections;
+using HLE.Memory;
 using HLE.Numerics;
 
 namespace AdventOfCode.Year2024.Day7;
 
-public sealed unsafe class Puzzle7() : Puzzle("AdventOfCode.Year2024.Day7.input.txt")
+public sealed partial class Puzzle7() : Puzzle("AdventOfCode.Year2024.Day7.input.txt")
 {
-    public ulong SolvePartOne()
+    public async Task<ulong> SolvePartOneAsync()
     {
         ReadOnlySpan<byte> input = InputUtf8;
-        uint* numbers = stackalloc uint[16];
+        using NativeMemory<uint> buffer = new(16 * 2, false);
+        int middleIndex = input[(input.Length / 2)..].IndexOf((byte)'\n') + input.Length / 2;
+
+        ReadOnlySpan<byte> firstHalf = input[..middleIndex];
+        ReadOnlySpan<byte> secondHalf = input[(middleIndex + 1)..];
+
+        Task<ulong> firstHalfTask = Task.Factory.StartNew(CheckInput, new State(ref buffer.Reference, firstHalf), default, TaskCreationOptions.None, TaskScheduler.Default);
+        Task<ulong> secondHalfTask = Task.Factory.StartNew(CheckInput, new State(ref Unsafe.Add(ref buffer.Reference, 16), secondHalf), default, TaskCreationOptions.None, TaskScheduler.Default);
+
+        ulong firstResult = await firstHalfTask;
+        ulong secondResult = await secondHalfTask;
+
+        return firstResult + secondResult;
+    }
+
+    private static unsafe ulong CheckInput(object? state)
+    {
+        ReadOnlySpan<byte> input = Unsafe.As<State>(state)!.Input;
+        uint* numbers = Unsafe.As<State>(state)!.Numbers;
+
         ulong result = 0;
         do
         {
@@ -41,10 +63,11 @@ public sealed unsafe class Puzzle7() : Puzzle("AdventOfCode.Year2024.Day7.input.
         return result;
     }
 
-    private static bool CheckLine(ulong testValue, uint* numbers, int numbersLength)
+    private static unsafe bool CheckLine(ulong testValue, uint* numbers, int numbersLength)
         => CheckLine(testValue, *numbers, numbers + 1, numbers + numbersLength - 1);
 
-    private static bool CheckLine(ulong testValue, ulong value, uint* numbers, uint* end)
+    [SkipLocalsInit]
+    private static unsafe bool CheckLine(ulong testValue, ulong value, uint* numbers, uint* end)
     {
         if (numbers == end)
         {

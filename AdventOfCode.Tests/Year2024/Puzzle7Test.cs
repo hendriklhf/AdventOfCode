@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using AdventOfCode.Year2024.Day7;
 using Xunit;
 
@@ -11,5 +12,5 @@ public sealed class Puzzle7Test : IDisposable
     public void Dispose() => _puzzle.Dispose();
 
     [Fact]
-    public void SolvePartOneTest() => Assert.Equal(12839601725877UL, _puzzle.SolvePartOne());
+    public async Task SolvePartOneTest() => Assert.Equal(12839601725877UL, await _puzzle.SolvePartOneAsync());
 }
